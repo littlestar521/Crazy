@@ -9,6 +9,11 @@
 #ifndef HWDefine_h
 #define HWDefine_h
 
+#import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger,ClassifyListType) {
+    ClassifyListTypeRecommend = 1,//推荐
+    ClassifyListTypeMedia ,//视频
+};
 
 //首页数据接口
 #define kMainDataList @"http://dailyapi.ibaozou.com/api/v1/documents/latest"
