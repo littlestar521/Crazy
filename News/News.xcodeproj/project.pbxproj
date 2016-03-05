@@ -12,6 +12,8 @@
 		F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F75181C87D36C00E847F3 /* AppDelegate.m */; };
 		F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31F751A1C87D36C00E847F3 /* Assets.xcassets */; };
 		F31F751E1C87D36C00E847F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31F751C1C87D36C00E847F3 /* LaunchScreen.storyboard */; };
+		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
+		F352E1841C891E0C00974874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F352E1831C891E0C00974874 /* Main.storyboard */; };
 		F3C4AB271C88203F00BF49E3 /* OtherData.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB261C88203F00BF49E3 /* OtherData.plist */; };
 		F3C4AB291C88211400BF49E3 /* Third.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB281C88211400BF49E3 /* Third.plist */; };
 		F3C4AB301C883E4500BF49E3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB2E1C883E4500BF49E3 /* MainViewController.m */; };
@@ -41,6 +43,9 @@
 		F31F751D1C87D36C00E847F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31F751F1C87D36C00E847F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31F75271C87D42F00E847F3 /* HWDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWDefine.h; sourceTree = "<group>"; };
+		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
+		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		F352E1831C891E0C00974874 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F3C4AB261C88203F00BF49E3 /* OtherData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OtherData.plist; sourceTree = "<group>"; };
 		F3C4AB281C88211400BF49E3 /* Third.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Third.plist; sourceTree = "<group>"; };
 		F3C4AB2D1C883E4500BF49E3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -286,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				F3C4AB5B1C8875EB00BF49E3 /* Main.plist */,
+				F352E1801C89187000974874 /* MainModel.h */,
+				F352E1811C89187000974874 /* MainModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +302,7 @@
 			children = (
 				F3C4AB481C88671700BF49E3 /* MainTableViewCell.h */,
 				F3C4AB491C88671700BF49E3 /* MainTableViewCell.m */,
+				F352E1831C891E0C00974874 /* Main.storyboard */,
 				F3C4AB4A1C88671700BF49E3 /* MainTableViewCell.xib */,
 			);
 			path = Views;
@@ -398,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C4AB291C88211400BF49E3 /* Third.plist in Resources */,
+				F352E1841C891E0C00974874 /* Main.storyboard in Resources */,
 				F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */,
 				F3C4AB271C88203F00BF49E3 /* OtherData.plist in Resources */,
 				F3C4AB4C1C88671700BF49E3 /* MainTableViewCell.xib in Resources */,
@@ -467,6 +476,7 @@
 				F3C4AB3B1C88400F00BF49E3 /* VOContentLayer.m in Sources */,
 				F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */,
 				F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */,
+				F352E1821C89187000974874 /* MainModel.m in Sources */,
 				F3C4AB3D1C88400F00BF49E3 /* VOSegment.m in Sources */,
 				F3C4AB3C1C88400F00BF49E3 /* VOIndicatorAnimation.m in Sources */,
 				F3C4AB301C883E4500BF49E3 /* MainViewController.m in Sources */,
