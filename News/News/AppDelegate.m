@@ -18,9 +18,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *mainNav = mainSB.instantiateInitialViewController;
-    self.window.rootViewController = mainNav;
+//    UIStoryboard *mainSB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UINavigationController *mainNav = mainSB.instantiateInitialViewController;
+//    self.window.rootViewController = mainNav;
+    
+    MainViewController *mainVC = [[MainViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mainVC];
+    self.window.rootViewController = nav;
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

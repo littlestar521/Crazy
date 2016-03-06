@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *source_nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *hit_countLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
@@ -24,11 +23,10 @@
     // Initialization code
 }
 - (void)setModel:(MainModel *)model{
-    self.thumbnail.image = [UIImage imageNamed:model.image];
+    [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:model.thumbnail] placeholderImage:nil];
     self.titleLabel.text = model.title;
-    self.name.text = model.name;
-    self.source_nameLabel.text = model.source_name;
-    self.hit_countLabel.text = model.hit_count;
+    self.name.text = model.section_name;
+    self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.source_name,model.hit_count];
 
     
 }

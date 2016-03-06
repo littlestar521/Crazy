@@ -10,21 +10,34 @@
 #import "VOSegmentedControl.h"
 #import "MainTableViewCell.h"
 #import "MainModel.h"
+#import "PullingRefreshTableView.h"
+#import "HWTools.h"
+#import "MediaViewController.h"
+#import "DetailViewController.h"
+#import "ProgressHUD.h"
+#import "SetView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
 
 
-@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,PullingRefreshTableViewDelegate>
+{
+    NSInteger _timeStamp;
+}
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong)UIScrollView *carouseView;
 @property(nonatomic,strong)UIPageControl *pageControll;
 @property(nonatomic,strong)NSTimer *timer;
 @property(nonatomic,strong)UIView *tableViewHeaderView;
-@property(nonatomic,strong)VOSegmentedControl *segmentControl;
+@property(nonatomic,strong)UIButton *leftBtn;
+
 @property(nonatomic,strong)NSMutableArray *adArray;
 @property(nonatomic,strong)NSMutableArray *listArray;
-
+@property(nonatomic,strong)NSMutableArray *mediaListArray;
+@property(nonatomic,strong)NSMutableArray *allDataArray;
+@property(nonatomic,strong)VOSegmentedControl *segmentControl;
+@property(nonatomic,strong)PullingRefreshTableView *pullrefreshV;
+@property(nonatomic,assign)BOOL refreshing;
 
 
 @end
@@ -36,18 +49,33 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"暴走日报";
     self.navigationController.navigationBar.backgroundColor = MineColor;
+    self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.leftBtn.frame = CGRectMake(0, 0, 60, 44);
+    
+    [self.leftBtn setImage:[UIImage imageNamed:@"btn_chengshi"] forState:UIControlStateNormal];
+    [self.leftBtn addTarget:self action:@selector(makeAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
+    self.leftBtn.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    
     [self.view addSubview:self.segmentControl];
+    [self.view addSubview:self.pullrefreshV];
+
+//    [self.pullrefreshV launchRefreshing];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _timeStamp = [HWTools getTimestamp];
     
     //注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    self.tableView.tableFooterView = [[UIView alloc]init];
+    [self.pullrefreshV registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    self.pullrefreshV.tableFooterView = [[UIView alloc]init];
+    self.refreshing = YES;
+    [self showPreviousSelectBtn];
     [self requestModel];
-
+//    [self chooseRequest];
 }
 
-#pragma mark ---------- UITableViewDataSource
+#pragma mark ----------  UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.listArray.count;
 }
@@ -67,28 +95,115 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    UIStoryboard *detailSB = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC =[detailSB instantiateViewControllerWithIdentifier:@"Detail"];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+#pragma mark ---------- 上拉加载下拉刷新
+- (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
+    self.refreshing = YES;
+    [self performSelector:@selector(requestModel) withObject:nil afterDelay:1.0];
+}
+- (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
+    if (_timeStamp > 3600*10) {
+        _timeStamp -= 3600*10;
+    }
+    self.refreshing = NO;
+    [self performSelector:@selector(requestModel) withObject:nil afterDelay:1.0];
+}
+- (NSDate *)pullingTableViewRefreshingFinishedDate{
+    return [HWTools getSystemNowDate];
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.pullrefreshV tableViewDidScroll:scrollView];
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self.pullrefreshV tableViewDidEndDragging:scrollView];
+    [self startTimer];
+}
+- (PullingRefreshTableView *)pullrefreshV{
+    if (_pullrefreshV == nil) {
+        self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight - 40)pullingDelegate:self];
+        self.pullrefreshV.delegate = self;
+        self.pullrefreshV.dataSource = self;
+        self.pullrefreshV.rowHeight = 90;
+        
+    }
+    return _pullrefreshV;
+}
+#pragma mark ---------- CustomMethod
+- (void)chooseRequest{
+    switch (self.classifyListType) {
+        case ClassifyListTypeRecommend:
+            [self getMediaRequest];
+            break;
+        case ClassifyListTypeMedia:
+            [self requestModel];
+            break;
+        default:
+            break;
+    }
 }
 
-#pragma mark ---------- CustomMethod
+- (void)getMediaRequest{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
+    [ProgressHUD show:@"拼命加载中···"];
+    [sessionManager GET:kMedia parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *resultDic = responseObject;
+//        NSString *timestamp = resultDic[@"timestamp"];
+        NSArray *videosArray = resultDic[@"videos"];
+        if (self.refreshing) {
+            if (self.mediaListArray.count > 0) {
+                [self.mediaListArray removeAllObjects];
+            }
+        }
+
+        for (NSDictionary *dic in videosArray) {
+            [self.mediaListArray addObject:dic];
+        }
+//        [self showPreviousSelectBtn];
+ 
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
+}
+- (void)showPreviousSelectBtn{
+    
+    switch (self.classifyListType) {
+        case ClassifyListTypeRecommend:
+        {
+            self.allDataArray = self.listArray;
+        }
+            break;
+        case ClassifyListTypeMedia:
+        {
+            self.allDataArray = self.mediaListArray;
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    [self.pullrefreshV reloadData];
+    [self.pullrefreshV tableViewDidFinishedLoading];
+    self.pullrefreshV.reachedTheEnd = NO;
+}
 - (void)configTableViewHeaderView{
     self.tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
     self.tableViewHeaderView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableHeaderView = self.tableViewHeaderView;
-    NSLog(@"!!!!!%lu", self.adArray.count);
+    self.pullrefreshV.tableHeaderView = self.tableViewHeaderView;
 
-    
-       [self.tableViewHeaderView addSubview:self.carouseView];
+    [self.tableViewHeaderView addSubview:self.carouseView];
     //添加图片
-//    if (!self.adArray.count) {
+    if (self.adArray.count > 0) {
         for (int i = 0; i < self.adArray.count; i++) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth * i , 0, kScreenWidth, 260)];
-            MJJLog(@"%@",self.adArray[i]);
             MainModel *model = self.adArray[i];
             [imageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
-            
-            MJJLog(@"%@",model.image);
-            
             imageView.userInteractionEnabled = YES;
             [self.carouseView addSubview:imageView];
             
@@ -97,7 +212,7 @@
             touchBtn.tag = 100 + i;
             [touchBtn addTarget:self action:@selector(touchADAction:) forControlEvents:UIControlEventTouchUpInside];
             [self.carouseView addSubview:touchBtn];
-//        }
+        
             //标题
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth * i + 30, 260 - 40- 30, kScreenWidth - 60, 60)];
             label.text = model.title;
@@ -106,58 +221,71 @@
             label.numberOfLines = 0;
             
             [self.carouseView addSubview:label];
+       }
     }
-//    if (!self.adArray.count) {
-    
     self.pageControll.numberOfPages = self.adArray.count;
- 
-//    }
-    MJJLog(@"1111111%@",self.adArray);
     [self.tableViewHeaderView addSubview:self.pageControll];
-    
-    
-    
+
 }
 //网络请求
 - (void)requestModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
-    [sessionManager GET:kMainDataList parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [ProgressHUD show:@"拼命加载中···"];
+    NSString *urlstr =kMainDataList;
+    if (!_refreshing) {
+        urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",_timeStamp]];
+        MJJLog(@"%@",urlstr);
+    }else{
+        if (self.listArray.count > 0){
+            [self.listArray removeAllObjects];
+        }
+    }
+    [sessionManager GET: urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD showSuccess:@"已加载~"];
         NSDictionary *resultDic = responseObject;
+
         NSArray *dataArray = resultDic[@"data"];
+        if (self.refreshing) {
+            if (self.listArray.count > 0) {
+                [self.listArray removeAllObjects];
+            }
+        }
         for (NSDictionary *dit in dataArray) {
             MainModel *model = [[MainModel alloc]initWithDictionary:dit];
             [self.listArray addObject:model];
-         }
-//        MJJLog(@"%ld",self.listArray.count);
+        }
+        
         NSArray *topArray = resultDic[@"top_stories"];
+        if (self.adArray.count > 0) {
+            [self.adArray removeAllObjects];
+        }
+        
         for (NSDictionary *dic in topArray) {
             MainModel *model = [[MainModel alloc]initWithDictionary:dic];
             [self.adArray addObject:model];
-
         }
-        for (NSString *url in self.adArray) {
-            MJJLog(@"%@",url);
-        }
-         [self.tableView reloadData];
+        [self.pullrefreshV reloadData];
         [self configTableViewHeaderView];
-       
-//        MJJLog(@"%lu",self.adArray.count);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.pullrefreshV tableViewDidFinishedLoading];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误%@",error]];
     }];
-}
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
 }
 
 
 #pragma mark ---------- 按钮点击方法
-- (void)touchADAction:(UIButton *)btn{
-    
+- (void)makeAction:(UIButton *)btn{
+    SetView *setView = [[SetView alloc]init];
+    [self.view addSubview:setView];
 }
-
+- (void)touchADAction:(UIButton *)btn{
+    UIStoryboard *detailSB = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC = [detailSB instantiateViewControllerWithIdentifier:@"Detail"];
+    [self.navigationController pushViewController:detailVC animated:NO];
+}
 #pragma mark ---------- 懒加载
 - (NSMutableArray *)listArray{
     if (_listArray == nil) {
@@ -171,10 +299,16 @@
     }
     return _adArray;
 }
+- (NSMutableArray *)mediaListArray{
+    if (_mediaListArray == nil) {
+        self.mediaListArray = [NSMutableArray new];
+    }
+    
+    return _mediaListArray;
+}
 - (UIScrollView *)carouseView{
     if (_carouseView == nil) {
         self.carouseView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
-        MJJLog(@"#####%lu", self.adArray.count);
         self.carouseView.contentSize = CGSizeMake(self.adArray.count*kScreenWidth, 260);
         self.carouseView.pagingEnabled = YES;
         self.carouseView.scrollEnabled = YES;
@@ -194,12 +328,6 @@
     }
     return _pageControll;
 }
-//- (NSTimer *)timer{
-//    if (_timer == nil) {
-//        self.timer = [NSTimer new];
-//    }
-//    return _timer;
-//}
 
 #pragma mark ---------- 首页轮播图
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -228,8 +356,7 @@
         return;
     }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(rollAnimation) userInfo:nil repeats:YES];
-//    self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(rollAnimation) userInfo:nil repeats:YES];
-//    [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
+
 }
 //每两秒执行一次,图片自动轮播
 - (void)rollAnimation{
@@ -244,18 +371,10 @@
     }
 }
 
-//当scollView是手动滑动的时候，定时器依然在计算时间，可能我们刚刚滑到下一页，导致在当前页停留的时间不够两秒。
-//解决方案在scollView开始移动的时候结束定时器
-//在scollView移动完毕的时候再启动定时器
-//scollview将要开始拖拽
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     //停止计时器
     [self.timer invalidate];
     self.timer = nil;//停止计时器并置为空，再次启动定时器才能正常执行
-}
-//scollView将要结束拖拽
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    [self startTimer];
 }
 
 #pragma mark ---------- VOSegmentedControl
@@ -271,18 +390,20 @@
         self.segmentControl.frame = CGRectMake(0, 60, kScreenWidth, 40);
         self.segmentControl.indicatorThickness = 2;
         self.segmentControl.selectedSegmentIndex = self.classifyListType-1;
-        //返回点击的是哪个按钮
         [self.segmentControl addTarget:self action:@selector(segmentCtrlValuechange:) forControlEvents:UIControlEventValueChanged];    }
     return _segmentControl;
 }
 - (void)segmentCtrlValuechange:(VOSegmentedControl *)segmentControl{
     self.classifyListType = segmentControl.selectedSegmentIndex + 1;
-    
+    [self chooseRequest];
 }
 - (void)viewDidAppear:(BOOL)animated{
+    [self viewWillDisappear:animated];
+    [ProgressHUD dismiss];
     [self startTimer];
 }
 - (void)viewWillDisappear:(BOOL)animated{
+    [ProgressHUD dismiss];
     //相当于mrc中的release
     [_timer invalidate], _timer = nil;
 }

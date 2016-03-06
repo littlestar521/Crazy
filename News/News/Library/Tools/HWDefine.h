@@ -17,11 +17,11 @@ typedef NS_ENUM(NSInteger,ClassifyListType) {
 
 //首页数据接口
 #define kMainDataList @"http://dailyapi.ibaozou.com/api/v1/documents/latest"
-//分类列表接口
-#define kClassifyList @"http://dailyapi.ibaozou.com/api/v2/articles/6949159/comments"
-//音频接口
-#define k4 @"http://dailyapi.ibaozou.com/api/v1/videos/latest"
-//
-#define media @"http://dailyapi.ibaozou.com/api/v1/videos/latest?timestamp=1456970400000&"
+//详情接口
+#define kDetail @"http://dailyapi.ibaozou.com/api/v2/articles/6949159/comments"
+
+#define kMedia @"http://dailyapi.ibaozou.com/api/v1/videos/latest"
+////音频接口
+#define media @"http://dailyapi.ibaozou.com/api/v1/videos/latest"
 
 #endif /* HWDefine_h */

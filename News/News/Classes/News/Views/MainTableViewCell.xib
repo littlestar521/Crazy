@@ -21,7 +21,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="强悍的兔子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lNe-7b-Jlv">
                         <rect key="frame" x="126" y="21" width="123" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.58147944630000004" green="1" blue="0.97793555840000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -30,18 +30,11 @@
                         <rect key="frame" x="126" y="52" width="237" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1222 阅读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JGy-mQ-HWH">
-                        <rect key="frame" x="293" y="101" width="70" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男人装" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RsZ-53-0Ap">
-                        <rect key="frame" x="126" y="101" width="96" height="18"/>
+                        <rect key="frame" x="126" y="101" width="237" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,13 +43,12 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="hit_countLabel" destination="JGy-mQ-HWH" id="bJX-K1-xtC"/>
                 <outlet property="name" destination="lNe-7b-Jlv" id="SMI-xh-zxV"/>
                 <outlet property="source_nameLabel" destination="RsZ-53-0Ap" id="wvV-gu-cQ7"/>
                 <outlet property="thumbnail" destination="M6h-2u-oAf" id="8JV-lY-obH"/>
                 <outlet property="titleLabel" destination="ReQ-L1-iCe" id="5t9-Nz-DKU"/>
             </connections>
-            <point key="canvasLocation" x="333.5" y="280"/>
+            <point key="canvasLocation" x="396.5" y="279"/>
         </tableViewCell>
     </objects>
 </document>
