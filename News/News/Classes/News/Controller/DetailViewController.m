@@ -7,9 +7,9 @@
 //
 
 #import "DetailViewController.h"
-
 @interface DetailViewController ()
 
+@property(nonatomic,strong)UIButton *leftBtn;
 @end
 
 @implementation DetailViewController
@@ -17,10 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    [self showBackBtn];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.frame];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.data]];
+    [self.view addSubview:webView];
+    [webView loadRequest:request];
+    
+    [self detaildata];
+}
+- (void)detaildata{
     
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

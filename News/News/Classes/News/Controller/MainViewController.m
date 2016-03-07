@@ -16,6 +16,7 @@
 #import "DetailViewController.h"
 #import "ProgressHUD.h"
 #import "SetView.h"
+#import "MediaTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFHTTPSessionManager.h>
 
@@ -23,6 +24,7 @@
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _timeStamp;
+    UIWebView *webView;
 }
 
 @property(nonatomic,strong)UIScrollView *carouseView;
@@ -66,27 +68,42 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     _timeStamp = [HWTools getTimestamp];
     
+    
     //注册cell
     [self.pullrefreshV registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [self.pullrefreshV registerNib:[UINib nibWithNibName:@"MediaTableViewCell" bundle:nil] forCellReuseIdentifier:@"CELL"];
     self.pullrefreshV.tableFooterView = [[UIView alloc]init];
     self.refreshing = YES;
+    self.classifyListType = ClassifyListTypeRecommend;
     [self showPreviousSelectBtn];
-    [self requestModel];
-//    [self chooseRequest];
+//    [self requestModel];
+    [self chooseRequest];
 }
 
 #pragma mark ----------  UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.listArray.count;
+    if (self.classifyListType == ClassifyListTypeRecommend) {
+        return self.listArray.count;
+    }
+        return self.mediaListArray.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    //防止数组越界
-    if (indexPath.row < self.listArray.count) {
-        cell.model = self.listArray[indexPath.row];
+    if (self.classifyListType == ClassifyListTypeRecommend) {
+        MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        //防止数组越界
+        if (indexPath.row < self.listArray.count) {
+            cell.model = self.listArray[indexPath.row];
+        }
+        return cell;
     }
-    return cell;
+    MediaTableViewCell *mediaCell = [self.pullrefreshV dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
+    if (indexPath.row < self.mediaListArray.count) {
+        mediaCell.model = self.mediaListArray[indexPath.row];
+    }
+    return mediaCell;
+    
 }
 
 #pragma mark ---------- UITableViewDelegate
@@ -95,9 +112,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UIStoryboard *detailSB = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    DetailViewController *detailVC =[detailSB instantiateViewControllerWithIdentifier:@"Detail"];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    DetailViewController *detailVC = [[DetailViewController alloc]init];
+    MainModel *model = self.listArray[indexPath.row];
+    detailVC.data = model.link;
+    [self.navigationController pushViewController:detailVC animated:NO];
+//    MainModel *model = self.adArray[indexPath.row];
+//    webView = [[UIWebView alloc]initWithFrame:self.view.frame];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.share_url]];
+//    
+//    [webView loadRequest:request];
+//    [self.view addSubview:webView];
+
+    
 }
 #pragma mark ---------- 上拉加载下拉刷新
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
@@ -126,25 +152,81 @@
         self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight - 40)pullingDelegate:self];
         self.pullrefreshV.delegate = self;
         self.pullrefreshV.dataSource = self;
-        self.pullrefreshV.rowHeight = 90;
+        if (self.classifyListType == ClassifyListTypeRecommend) {
+            self.pullrefreshV.rowHeight = 90;
+        }else if(self.classifyListType ==ClassifyListTypeMedia){
+            self.pullrefreshV.rowHeight = 375;
+        }
+        
         
     }
     return _pullrefreshV;
 }
 #pragma mark ---------- CustomMethod
 - (void)chooseRequest{
+    NSLog(@"%lu", self.classifyListType);
     switch (self.classifyListType) {
         case ClassifyListTypeRecommend:
-            [self getMediaRequest];
+            [self requestModel];
             break;
         case ClassifyListTypeMedia:
-            [self requestModel];
+            [self getMediaRequest];
             break;
         default:
             break;
     }
+    
 }
-
+//网络请求
+- (void)requestModel{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
+    [ProgressHUD show:@"拼命加载中···"];
+    NSString *urlstr =kMainDataList;
+    if (!_refreshing) {
+        urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",_timeStamp]];
+    }else{
+        if (self.listArray.count > 0){
+            [self.listArray removeAllObjects];
+        }
+    }
+    [sessionManager GET: urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD showSuccess:@"已加载~"];
+        NSDictionary *resultDic = responseObject;
+        
+        NSArray *dataArray = resultDic[@"data"];
+        if (self.refreshing) {
+            if (self.listArray.count > 0) {
+                [self.listArray removeAllObjects];
+            }
+        }
+        for (NSDictionary *dit in dataArray) {
+            MainModel *model = [[MainModel alloc]initWithDictionary:dit];
+            [self.listArray addObject:model];
+        }
+        
+        NSArray *topArray = resultDic[@"top_stories"];
+        if (_refreshing) {
+            if (self.adArray.count > 0) {
+                [self.adArray removeAllObjects];
+            }
+        }
+        for (NSDictionary *dic in topArray) {
+            MainModel *model = [[MainModel alloc]initWithDictionary:dic];
+            [self.adArray addObject:model];
+        }
+        [self showPreviousSelectBtn];
+//        [self]
+        [self.pullrefreshV reloadData];
+        [self configTableViewHeaderView];
+        [self.pullrefreshV tableViewDidFinishedLoading];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
+    }];
+}
+//MV网络请求
 - (void)getMediaRequest{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
@@ -152,22 +234,25 @@
     [sessionManager GET:kMedia parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD showSuccess:@"已加载~"];
         NSDictionary *resultDic = responseObject;
 //        NSString *timestamp = resultDic[@"timestamp"];
         NSArray *videosArray = resultDic[@"videos"];
-        if (self.refreshing) {
+        if (_refreshing) {
             if (self.mediaListArray.count > 0) {
                 [self.mediaListArray removeAllObjects];
             }
         }
-
         for (NSDictionary *dic in videosArray) {
             [self.mediaListArray addObject:dic];
         }
-//        [self showPreviousSelectBtn];
- 
-        
+        [self.pullrefreshV tableViewDidFinishedLoading];
+        self.pullrefreshV.reachedTheEnd = NO;
+        [self.pullrefreshV reloadData];
+        [self showPreviousSelectBtn];
+        MJJLog(@"%lu",self.mediaListArray.count);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
     }];
 }
 - (void)showPreviousSelectBtn{
@@ -187,16 +272,19 @@
         default:
             break;
     }
-
+    
     [self.pullrefreshV reloadData];
-    [self.pullrefreshV tableViewDidFinishedLoading];
-    self.pullrefreshV.reachedTheEnd = NO;
+    
 }
+
 - (void)configTableViewHeaderView{
     self.tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
     self.tableViewHeaderView.backgroundColor = [UIColor whiteColor];
+    if (self.classifyListType == ClassifyListTypeMedia) {
+        self.pullrefreshV.tableHeaderView = nil;
+    }else{
     self.pullrefreshV.tableHeaderView = self.tableViewHeaderView;
-
+    }
     [self.tableViewHeaderView addSubview:self.carouseView];
     //添加图片
     if (self.adArray.count > 0) {
@@ -227,54 +315,6 @@
     [self.tableViewHeaderView addSubview:self.pageControll];
 
 }
-//网络请求
-- (void)requestModel{
-    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
-    [ProgressHUD show:@"拼命加载中···"];
-    NSString *urlstr =kMainDataList;
-    if (!_refreshing) {
-        urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",_timeStamp]];
-        MJJLog(@"%@",urlstr);
-    }else{
-        if (self.listArray.count > 0){
-            [self.listArray removeAllObjects];
-        }
-    }
-    [sessionManager GET: urlstr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [ProgressHUD showSuccess:@"已加载~"];
-        NSDictionary *resultDic = responseObject;
-
-        NSArray *dataArray = resultDic[@"data"];
-        if (self.refreshing) {
-            if (self.listArray.count > 0) {
-                [self.listArray removeAllObjects];
-            }
-        }
-        for (NSDictionary *dit in dataArray) {
-            MainModel *model = [[MainModel alloc]initWithDictionary:dit];
-            [self.listArray addObject:model];
-        }
-        
-        NSArray *topArray = resultDic[@"top_stories"];
-        if (self.adArray.count > 0) {
-            [self.adArray removeAllObjects];
-        }
-        
-        for (NSDictionary *dic in topArray) {
-            MainModel *model = [[MainModel alloc]initWithDictionary:dic];
-            [self.adArray addObject:model];
-        }
-        [self.pullrefreshV reloadData];
-        [self configTableViewHeaderView];
-        [self.pullrefreshV tableViewDidFinishedLoading];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误%@",error]];
-    }];
-}
-
 
 #pragma mark ---------- 按钮点击方法
 - (void)makeAction:(UIButton *)btn{
@@ -282,9 +322,12 @@
     [self.view addSubview:setView];
 }
 - (void)touchADAction:(UIButton *)btn{
-    UIStoryboard *detailSB = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    DetailViewController *detailVC = [detailSB instantiateViewControllerWithIdentifier:@"Detail"];
+    
+    DetailViewController *detailVC = [[DetailViewController alloc]init];
+    MainModel *model = self.adArray[btn.tag-100];
+    detailVC.data = model.share_url;
     [self.navigationController pushViewController:detailVC animated:NO];
+    
 }
 #pragma mark ---------- 懒加载
 - (NSMutableArray *)listArray{

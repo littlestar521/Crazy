@@ -18,12 +18,13 @@
 @property(nonatomic,strong)NSString *image;
 @property(nonatomic,strong)NSString *link;
 //详情
-@property(nonatomic,strong)NSString *publish_time;//出版时间
+@property(nonatomic,strong)NSString *url;//
 @property(nonatomic,strong)NSString *name;//上传者名字
 @property(nonatomic,strong)NSString *source_name;//来源名
 @property(nonatomic,strong)NSString *title;//标题
 @property(nonatomic,strong)NSString *thumbnail;
 @property(nonatomic,strong)NSString *section_name;
+@property(nonatomic,strong)NSString *share_url;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

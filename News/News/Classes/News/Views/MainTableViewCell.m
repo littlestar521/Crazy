@@ -27,6 +27,7 @@
     self.titleLabel.text = model.title;
     self.name.text = model.section_name;
     self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.source_name,model.hit_count];
+    
 
     
 }

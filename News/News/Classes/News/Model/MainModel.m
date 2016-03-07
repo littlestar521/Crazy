@@ -19,12 +19,13 @@
         self.hit_count = dic[@"hit_count_string"];
         self.image = dic[@"image"];
         self.link = dic[@"link"];
-        self.publish_time = dic[@"publish_time"];
+        self.url = dic[@"url"];
         self.name = dic[@"name"];
         self.title = dic[@"title"];
         self.source_name = dic[@"source_name"];
         self.thumbnail = dic[@"thumbnail"];
         self.section_name = dic[@"section_name"];
+        self.share_url = dic[@"share_url"];
     }
     return self;
 }

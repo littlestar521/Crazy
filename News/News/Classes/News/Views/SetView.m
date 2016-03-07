@@ -24,12 +24,15 @@
 }
 - (void)configView{
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    self.setView = [[UIView alloc]initWithFrame:CGRectMake(-150, 0, kScreenWidth-100, kScreenHeight)];
+    self.setView = [[UIView alloc]initWithFrame:CGRectMake(100-kScreenWidth, 0, kScreenWidth-100, kScreenHeight)];
     self.setView.backgroundColor = [UIColor whiteColor];
     [window addSubview:self.setView];
-    self.backView = [[UIView alloc]initWithFrame:CGRectMake(100-kScreenWidth, 0, 100, kScreenHeight)];
-    self.backView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
+    self.backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self.backView.backgroundColor = [UIColor blackColor];
+    self.backView.alpha = 0.0;
     [window addSubview:self.backView];
+    
+    
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loginBtn.frame = CGRectMake(0, 0, kScreenWidth-100, 150);
@@ -56,16 +59,21 @@
     UITapGestureRecognizer *disappear = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(disapearAction)];
     [self.backView addGestureRecognizer:disappear];
     [UIView animateWithDuration:1.0 animations:^{
+        //移入屏幕后的frame
         self.setView.frame = CGRectMake(0, 0, kScreenWidth-100, kScreenHeight);
         self.backView.frame = CGRectMake(kScreenWidth-100, 0, 100, kScreenHeight);
+        self.backView.alpha = 0.6;
+        
     }];
 
     
 }
 - (void)disapearAction{
     [UIView animateWithDuration:1.0 animations:^{
+        //移出屏幕的frame
         self.setView.frame = CGRectMake(100-kScreenWidth, 0, kScreenWidth-100, kScreenHeight);
-        self.backView.frame = CGRectMake(100-kScreenWidth, 0, 100, kScreenHeight);
+        self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+        self.backView.alpha = 0.0;
         
     }];
     

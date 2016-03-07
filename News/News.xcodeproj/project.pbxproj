@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		376289B488A36E09536D9456 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AC99EC7AA98205D1A5B296 /* libPods.a */; };
+		F31D6A2D1C8D7F2F009DF93B /* MediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D6A2C1C8D7F2F009DF93B /* MediaModel.m */; };
 		F31F75161C87D36C00E847F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F75151C87D36C00E847F3 /* main.m */; };
 		F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F75181C87D36C00E847F3 /* AppDelegate.m */; };
 		F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31F751A1C87D36C00E847F3 /* Assets.xcassets */; };
 		F31F751E1C87D36C00E847F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31F751C1C87D36C00E847F3 /* LaunchScreen.storyboard */; };
 		F33132F71C8C078300108E2D /* Media.plist in Resources */ = {isa = PBXBuildFile; fileRef = F33132F61C8C078300108E2D /* Media.plist */; };
 		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
+		F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA41C8D60B80050E512 /* UIViewController+Common.m */; };
+		F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA71C8D70580050E512 /* MediaTableViewCell.m */; };
+		F3883BAA1C8D70580050E512 /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3883BA81C8D70580050E512 /* MediaTableViewCell.xib */; };
 		F3AB98BF1C8AEE96008CB755 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3AB98BE1C8AEE96008CB755 /* Detail.storyboard */; };
 		F3B08F401C8A923E000F1535 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B08F3F1C8A923E000F1535 /* HWTools.m */; };
 		F3B08F431C8AAC3A000F1535 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B08F421C8AAC3A000F1535 /* MediaViewController.m */; };
@@ -40,6 +44,8 @@
 		18AC99EC7AA98205D1A5B296 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C77B96438C6C3D9C46F03B4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B3C194C46927D4B1D664EED4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F31D6A2B1C8D7F2F009DF93B /* MediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaModel.h; sourceTree = "<group>"; };
+		F31D6A2C1C8D7F2F009DF93B /* MediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaModel.m; sourceTree = "<group>"; };
 		F31F75111C87D36B00E847F3 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31F75151C87D36C00E847F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F31F75171C87D36C00E847F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +57,11 @@
 		F33132F61C8C078300108E2D /* Media.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Media.plist; sourceTree = "<group>"; };
 		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		F3883BA31C8D60B80050E512 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Common.h"; sourceTree = "<group>"; };
+		F3883BA41C8D60B80050E512 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Common.m"; sourceTree = "<group>"; };
+		F3883BA61C8D70580050E512 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
+		F3883BA71C8D70580050E512 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
+		F3883BA81C8D70580050E512 /* MediaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
 		F3AB98BE1C8AEE96008CB755 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		F3B08F3E1C8A923E000F1535 /* HWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTools.h; sourceTree = "<group>"; };
 		F3B08F3F1C8A923E000F1535 /* HWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTools.m; sourceTree = "<group>"; };
@@ -174,6 +185,8 @@
 				F31F75271C87D42F00E847F3 /* HWDefine.h */,
 				F3B08F3E1C8A923E000F1535 /* HWTools.h */,
 				F3B08F3F1C8A923E000F1535 /* HWTools.m */,
+				F3883BA31C8D60B80050E512 /* UIViewController+Common.h */,
+				F3883BA41C8D60B80050E512 /* UIViewController+Common.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -282,6 +295,8 @@
 				F3B489CD1C8C275E0018BC9F /* Property List.plist */,
 				F352E1801C89187000974874 /* MainModel.h */,
 				F352E1811C89187000974874 /* MainModel.m */,
+				F31D6A2B1C8D7F2F009DF93B /* MediaModel.h */,
+				F31D6A2C1C8D7F2F009DF93B /* MediaModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +310,9 @@
 				F3C4AB4A1C88671700BF49E3 /* MainTableViewCell.xib */,
 				F3B489CF1C8C2F340018BC9F /* SetView.h */,
 				F3B489D01C8C2F340018BC9F /* SetView.m */,
+				F3883BA61C8D70580050E512 /* MediaTableViewCell.h */,
+				F3883BA71C8D70580050E512 /* MediaTableViewCell.m */,
+				F3883BA81C8D70580050E512 /* MediaTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +420,7 @@
 				F3C4AB4C1C88671700BF49E3 /* MainTableViewCell.xib in Resources */,
 				F3C4AB521C8868BC00BF49E3 /* blueArrow.png in Resources */,
 				F3C4AB591C8868C500BF49E3 /* ProgressHUD.bundle in Resources */,
+				F3883BAA1C8D70580050E512 /* MediaTableViewCell.xib in Resources */,
 				F31F751E1C87D36C00E847F3 /* LaunchScreen.storyboard in Resources */,
 				F3C4AB531C8868BC00BF49E3 /* blueArrowDown.png in Resources */,
 				F3C4AB5C1C8875EB00BF49E3 /* Main.plist in Resources */,
@@ -469,13 +488,16 @@
 				F3C4AB3B1C88400F00BF49E3 /* VOContentLayer.m in Sources */,
 				F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */,
 				F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */,
+				F31D6A2D1C8D7F2F009DF93B /* MediaModel.m in Sources */,
 				F352E1821C89187000974874 /* MainModel.m in Sources */,
+				F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */,
 				F3C4AB3D1C88400F00BF49E3 /* VOSegment.m in Sources */,
 				F3C4AB3C1C88400F00BF49E3 /* VOIndicatorAnimation.m in Sources */,
 				F3C4AB301C883E4500BF49E3 /* MainViewController.m in Sources */,
 				F31F75161C87D36C00E847F3 /* main.m in Sources */,
 				F3B08F431C8AAC3A000F1535 /* MediaViewController.m in Sources */,
 				F3C4AB4B1C88671700BF49E3 /* MainTableViewCell.m in Sources */,
+				F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */,
 				F3C4AB541C8868BC00BF49E3 /* PullingRefreshTableView.m in Sources */,
 				F3C4AB3E1C88400F00BF49E3 /* VOSegmentedControl.m in Sources */,
 				F3B08F461C8AAC71000F1535 /* DetailViewController.m in Sources */,
