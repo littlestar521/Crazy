@@ -14,11 +14,11 @@
     if (self) {
         self.image = dit[@"image"];
         self.title = dit[@"title"];
-        self.play_count = dit[@"play_count"];
-        self.vote_count = dit[@"vote_count"];
-        self.comment_count = dit[@"comment_count"];
+        self.play_count = [dit[@"play_count"] stringValue];
+        self.vote_count = [dit[@"vote_count"] stringValue];
+        self.comment_count = [dit[@"comment_count"] stringValue];
         self.first_url = dit[@"first_url"];
-        self.play_time = dit[@"play_time"];
+        self.play_time = [dit[@"play_time"] stringValue];
     }
     return self;
 }

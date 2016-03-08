@@ -21,7 +21,7 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 
 
-@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,PullingRefreshTableViewDelegate>
+@interface MainViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,PullingRefreshTableViewDelegate,PushVCDelegate>
 {
     NSInteger _timeStamp;
     UIWebView *webView;
@@ -40,7 +40,6 @@
 @property(nonatomic,strong)VOSegmentedControl *segmentControl;
 @property(nonatomic,strong)PullingRefreshTableView *pullrefreshV;
 @property(nonatomic,assign)BOOL refreshing;
-
 
 @end
 
@@ -75,9 +74,12 @@
     self.pullrefreshV.tableFooterView = [[UIView alloc]init];
     self.refreshing = YES;
     self.classifyListType = ClassifyListTypeRecommend;
-    [self showPreviousSelectBtn];
-//    [self requestModel];
-    [self chooseRequest];
+    [self requestModel];
+}
+//实现自定义代理方法
+- (void)getOtherViewController:(UIViewController *)otherVC{
+    
+    [self.navigationController pushViewController:otherVC animated:NO];
 }
 
 #pragma mark ----------  UITableViewDataSource
@@ -108,21 +110,26 @@
 
 #pragma mark ---------- UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    if (self.classifyListType == ClassifyListTypeRecommend) {
+        return 150;
+    }
+    return 293;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailViewController *detailVC = [[DetailViewController alloc]init];
-    MainModel *model = self.listArray[indexPath.row];
-    detailVC.data = model.link;
-    [self.navigationController pushViewController:detailVC animated:NO];
-//    MainModel *model = self.adArray[indexPath.row];
-//    webView = [[UIWebView alloc]initWithFrame:self.view.frame];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:model.share_url]];
-//    
-//    [webView loadRequest:request];
-//    [self.view addSubview:webView];
-
+    if (self.classifyListType == ClassifyListTypeRecommend) {
+        DetailViewController *detailVC = [[DetailViewController alloc]init];
+        MainModel *model = self.listArray[indexPath.row];
+        if (model.link) {
+            detailVC.data = model.link;
+        }else{
+            detailVC.data = model.share_url;
+        }
+        [self.navigationController pushViewController:detailVC animated:NO];
+    }else if (self.classifyListType == ClassifyListTypeMedia){
+//        [self.mediaListArray removeAllObjects];
+    }
+    
     
 }
 #pragma mark ---------- 上拉加载下拉刷新
@@ -155,7 +162,8 @@
         if (self.classifyListType == ClassifyListTypeRecommend) {
             self.pullrefreshV.rowHeight = 90;
         }else if(self.classifyListType ==ClassifyListTypeMedia){
-            self.pullrefreshV.rowHeight = 375;
+            self.pullrefreshV.backgroundColor = [[UIColor grayColor]colorWithAlphaComponent:0.4];
+            self.pullrefreshV.rowHeight = 293;
         }
         
         
@@ -164,7 +172,6 @@
 }
 #pragma mark ---------- CustomMethod
 - (void)chooseRequest{
-    NSLog(@"%lu", self.classifyListType);
     switch (self.classifyListType) {
         case ClassifyListTypeRecommend:
             [self requestModel];
@@ -181,7 +188,7 @@
 - (void)requestModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
-    [ProgressHUD show:@"拼命加载中···"];
+    [ProgressHUD show:@"别催，加载着呢~"];
     NSString *urlstr =kMainDataList;
     if (!_refreshing) {
         urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",_timeStamp]];
@@ -218,7 +225,6 @@
             [self.adArray addObject:model];
         }
         [self showPreviousSelectBtn];
-//        [self]
         [self.pullrefreshV reloadData];
         [self configTableViewHeaderView];
         [self.pullrefreshV tableViewDidFinishedLoading];
@@ -236,7 +242,6 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ProgressHUD showSuccess:@"已加载~"];
         NSDictionary *resultDic = responseObject;
-//        NSString *timestamp = resultDic[@"timestamp"];
         NSArray *videosArray = resultDic[@"videos"];
         if (_refreshing) {
             if (self.mediaListArray.count > 0) {
@@ -244,12 +249,14 @@
             }
         }
         for (NSDictionary *dic in videosArray) {
-            [self.mediaListArray addObject:dic];
+            MediaModel *model = [[MediaModel alloc]initWithDictionary:dic];
+            [self.mediaListArray addObject:model];
         }
         [self.pullrefreshV tableViewDidFinishedLoading];
+
         self.pullrefreshV.reachedTheEnd = NO;
-        [self.pullrefreshV reloadData];
         [self showPreviousSelectBtn];
+        [self.pullrefreshV reloadData];
         MJJLog(@"%lu",self.mediaListArray.count);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
@@ -274,18 +281,17 @@
     }
     
     [self.pullrefreshV reloadData];
-    
+    if (self.classifyListType == ClassifyListTypeMedia) {
+        self.pullrefreshV.tableHeaderView = nil;
+    }else{
+        self.pullrefreshV.tableHeaderView = self.tableViewHeaderView;
+    }
 }
 
 - (void)configTableViewHeaderView{
     self.tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
     self.tableViewHeaderView.backgroundColor = [UIColor whiteColor];
-    if (self.classifyListType == ClassifyListTypeMedia) {
-        self.pullrefreshV.tableHeaderView = nil;
-    }else{
-    self.pullrefreshV.tableHeaderView = self.tableViewHeaderView;
-    }
-    [self.tableViewHeaderView addSubview:self.carouseView];
+   
     //添加图片
     if (self.adArray.count > 0) {
         for (int i = 0; i < self.adArray.count; i++) {
@@ -312,13 +318,15 @@
        }
     }
     self.pageControll.numberOfPages = self.adArray.count;
+     [self.tableViewHeaderView addSubview:self.carouseView];
     [self.tableViewHeaderView addSubview:self.pageControll];
-
+    [self showPreviousSelectBtn];
 }
 
 #pragma mark ---------- 按钮点击方法
 - (void)makeAction:(UIButton *)btn{
     SetView *setView = [[SetView alloc]init];
+    setView.delegate = self;
     [self.view addSubview:setView];
 }
 - (void)touchADAction:(UIButton *)btn{

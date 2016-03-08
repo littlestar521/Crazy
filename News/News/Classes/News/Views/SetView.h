@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetView : UIView
+@protocol PushVCDelegate <NSObject>
 
+- (void)getOtherViewController:(UIViewController *)otherVC;
+
+
+@end
+@interface SetView : UIView
+@property(nonatomic,assign)id<PushVCDelegate>delegate;
 @end

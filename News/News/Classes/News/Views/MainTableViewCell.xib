@@ -40,15 +40,23 @@
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iOE-vr-JLa">
+                        <rect key="frame" x="0.0" y="135" width="375" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.75606479270000004" green="0.76879384569999998" blue="0.76879384569999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="name" destination="lNe-7b-Jlv" id="SMI-xh-zxV"/>
-                <outlet property="source_nameLabel" destination="RsZ-53-0Ap" id="wvV-gu-cQ7"/>
+                <outlet property="source_nameLabel" destination="RsZ-53-0Ap" id="0cZ-zd-0F9"/>
                 <outlet property="thumbnail" destination="M6h-2u-oAf" id="8JV-lY-obH"/>
                 <outlet property="titleLabel" destination="ReQ-L1-iCe" id="5t9-Nz-DKU"/>
             </connections>
-            <point key="canvasLocation" x="396.5" y="279"/>
+            <point key="canvasLocation" x="554.5" y="262"/>
         </tableViewCell>
     </objects>
 </document>

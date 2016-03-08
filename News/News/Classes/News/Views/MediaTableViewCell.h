@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MediaModel.h"
 @interface MediaTableViewCell : UITableViewCell
+
+
 @property(nonatomic,strong)MediaModel *model;
+
+
 @end

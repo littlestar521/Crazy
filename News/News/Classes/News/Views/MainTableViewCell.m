@@ -11,7 +11,6 @@
 @interface MainTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *source_nameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
@@ -23,6 +22,7 @@
     // Initialization code
 }
 - (void)setModel:(MainModel *)model{
+    
     [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:model.thumbnail] placeholderImage:nil];
     self.titleLabel.text = model.title;
     self.name.text = model.section_name;

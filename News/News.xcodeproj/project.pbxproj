@@ -14,6 +14,9 @@
 		F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31F751A1C87D36C00E847F3 /* Assets.xcassets */; };
 		F31F751E1C87D36C00E847F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31F751C1C87D36C00E847F3 /* LaunchScreen.storyboard */; };
 		F33132F71C8C078300108E2D /* Media.plist in Resources */ = {isa = PBXBuildFile; fileRef = F33132F61C8C078300108E2D /* Media.plist */; };
+		F34C1FDA1C8EF42B00895972 /* Comment.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FD91C8EF42A00895972 /* Comment.plist */; };
+		F34C1FDC1C8EF50800895972 /* Like.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDB1C8EF50800895972 /* Like.plist */; };
+		F34C1FDE1C8EF5C700895972 /* Read.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDD1C8EF5C700895972 /* Read.plist */; };
 		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
 		F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA41C8D60B80050E512 /* UIViewController+Common.m */; };
 		F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA71C8D70580050E512 /* MediaTableViewCell.m */; };
@@ -38,6 +41,8 @@
 		F3C4AB591C8868C500BF49E3 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB561C8868C500BF49E3 /* ProgressHUD.bundle */; };
 		F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB581C8868C500BF49E3 /* ProgressHUD.m */; };
 		F3C4AB5C1C8875EB00BF49E3 /* Main.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB5B1C8875EB00BF49E3 /* Main.plist */; };
+		F3EFCC361C8E99840096756D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EFCC351C8E99840096756D /* MediaPlayer.framework */; };
+		F3EFCC391C8ECCA30096756D /* BillboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EFCC381C8ECCA30096756D /* BillboardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +59,10 @@
 		F31F751D1C87D36C00E847F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F31F751F1C87D36C00E847F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31F75271C87D42F00E847F3 /* HWDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWDefine.h; sourceTree = "<group>"; };
-		F33132F61C8C078300108E2D /* Media.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Media.plist; sourceTree = "<group>"; };
+		F33132F61C8C078300108E2D /* Media.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = Media.plist; path = ../../Media/Model/Media.plist; sourceTree = "<group>"; };
+		F34C1FD91C8EF42A00895972 /* Comment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Comment.plist; sourceTree = "<group>"; };
+		F34C1FDB1C8EF50800895972 /* Like.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Like.plist; sourceTree = "<group>"; };
+		F34C1FDD1C8EF5C700895972 /* Read.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Read.plist; sourceTree = "<group>"; };
 		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
 		F3883BA31C8D60B80050E512 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Common.h"; sourceTree = "<group>"; };
@@ -95,6 +103,9 @@
 		F3C4AB571C8868C500BF49E3 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		F3C4AB581C8868C500BF49E3 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		F3C4AB5B1C8875EB00BF49E3 /* Main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Main.plist; sourceTree = "<group>"; };
+		F3EFCC351C8E99840096756D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		F3EFCC371C8ECCA30096756D /* BillboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillboardViewController.h; sourceTree = "<group>"; };
+		F3EFCC381C8ECCA30096756D /* BillboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillboardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3EFCC361C8E99840096756D /* MediaPlayer.framework in Frameworks */,
 				376289B488A36E09536D9456 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +124,7 @@
 		49DCD66EF911D360B216655A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3EFCC351C8E99840096756D /* MediaPlayer.framework */,
 				18AC99EC7AA98205D1A5B296 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -223,7 +236,6 @@
 		F31F752F1C87E5FD00E847F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F33132F61C8C078300108E2D /* Media.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +296,8 @@
 				F3C4AB2E1C883E4500BF49E3 /* MainViewController.m */,
 				F3B08F441C8AAC71000F1535 /* DetailViewController.h */,
 				F3B08F451C8AAC71000F1535 /* DetailViewController.m */,
+				F3EFCC371C8ECCA30096756D /* BillboardViewController.h */,
+				F3EFCC381C8ECCA30096756D /* BillboardViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,6 +307,10 @@
 			children = (
 				F3C4AB5B1C8875EB00BF49E3 /* Main.plist */,
 				F3B489CD1C8C275E0018BC9F /* Property List.plist */,
+				F33132F61C8C078300108E2D /* Media.plist */,
+				F34C1FDD1C8EF5C700895972 /* Read.plist */,
+				F34C1FDB1C8EF50800895972 /* Like.plist */,
+				F34C1FD91C8EF42A00895972 /* Comment.plist */,
 				F352E1801C89187000974874 /* MainModel.h */,
 				F352E1811C89187000974874 /* MainModel.m */,
 				F31D6A2B1C8D7F2F009DF93B /* MediaModel.h */,
@@ -415,6 +433,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C4AB291C88211400BF49E3 /* Third.plist in Resources */,
+				F34C1FDC1C8EF50800895972 /* Like.plist in Resources */,
+				F34C1FDA1C8EF42B00895972 /* Comment.plist in Resources */,
+				F34C1FDE1C8EF5C700895972 /* Read.plist in Resources */,
 				F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */,
 				F3AB98BF1C8AEE96008CB755 /* Detail.storyboard in Resources */,
 				F3C4AB4C1C88671700BF49E3 /* MainTableViewCell.xib in Resources */,
@@ -497,6 +518,7 @@
 				F31F75161C87D36C00E847F3 /* main.m in Sources */,
 				F3B08F431C8AAC3A000F1535 /* MediaViewController.m in Sources */,
 				F3C4AB4B1C88671700BF49E3 /* MainTableViewCell.m in Sources */,
+				F3EFCC391C8ECCA30096756D /* BillboardViewController.m in Sources */,
 				F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */,
 				F3C4AB541C8868BC00BF49E3 /* PullingRefreshTableView.m in Sources */,
 				F3C4AB3E1C88400F00BF49E3 /* VOSegmentedControl.m in Sources */,
@@ -607,9 +629,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/qipeng/Desktop/Crazy/News/News/Library/Tools/Main.pch;
 				INFOPLIST_FILE = News/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = can.Mangoinc.News;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -621,9 +645,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/qipeng/Desktop/Crazy/News/News/Library/Tools/Main.pch;
 				INFOPLIST_FILE = News/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = can.Mangoinc.News;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

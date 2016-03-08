@@ -11,5 +11,6 @@
 @interface MainTableViewCell : UITableViewCell
 
 @property(nonatomic,strong)MainModel *model;
+@property (weak, nonatomic) IBOutlet UILabel *source_nameLabel;
 
 @end

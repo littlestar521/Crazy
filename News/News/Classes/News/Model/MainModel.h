@@ -10,21 +10,22 @@
 
 @interface MainModel : NSObject
 
-@property(nonatomic,strong)NSString *article_type;//文章类型
-@property(nonatomic,strong)NSString *comment_count;//评论数
-@property(nonatomic,strong)NSString *created_at;//创建时间
-@property(nonatomic,strong)NSString *document_id;
-@property(nonatomic,strong)NSString *hit_count;//阅读量
-@property(nonatomic,strong)NSString *image;
-@property(nonatomic,strong)NSString *link;
+@property(nonatomic,copy)NSString *article_type;//文章类型
+@property(nonatomic,copy)NSString *comment_count;//评论数
+@property(nonatomic,copy)NSString *created_at;//创建时间
+@property(nonatomic,copy)NSString *document_id;
+@property(nonatomic,copy)NSString *hit_count;//阅读量
+@property(nonatomic,copy)NSString *image;
+@property(nonatomic,copy)NSString *link;
 //详情
-@property(nonatomic,strong)NSString *url;//
-@property(nonatomic,strong)NSString *name;//上传者名字
-@property(nonatomic,strong)NSString *source_name;//来源名
-@property(nonatomic,strong)NSString *title;//标题
-@property(nonatomic,strong)NSString *thumbnail;
-@property(nonatomic,strong)NSString *section_name;
-@property(nonatomic,strong)NSString *share_url;
+@property(nonatomic,copy)NSString *url;//
+@property(nonatomic,copy)NSString *name;//上传者名字
+@property(nonatomic,copy)NSString *source_name;//来源名
+@property(nonatomic,copy)NSString *title;//标题
+@property(nonatomic,copy)NSString *thumbnail;
+@property(nonatomic,copy)NSString *section_name;
+@property(nonatomic,copy)NSString *share_url;
+@property(nonatomic,copy)NSString *author_name;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

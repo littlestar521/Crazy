@@ -26,6 +26,7 @@
         self.thumbnail = dic[@"thumbnail"];
         self.section_name = dic[@"section_name"];
         self.share_url = dic[@"share_url"];
+        self.author_name = dic[@"author_name"];
     }
     return self;
 }

@@ -20,6 +20,7 @@
 
     [self showBackBtn];
     UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.frame];
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.data]];
     [self.view addSubview:webView];
     [webView loadRequest:request];
