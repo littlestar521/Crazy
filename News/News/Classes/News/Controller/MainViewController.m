@@ -31,7 +31,6 @@
 @property(nonatomic,strong)UIPageControl *pageControll;
 @property(nonatomic,strong)NSTimer *timer;
 @property(nonatomic,strong)UIView *tableViewHeaderView;
-@property(nonatomic,strong)UIButton *leftBtn;
 
 @property(nonatomic,strong)NSMutableArray *adArray;
 @property(nonatomic,strong)NSMutableArray *listArray;
@@ -50,14 +49,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"暴走日报";
     self.navigationController.navigationBar.backgroundColor = MineColor;
-    self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.leftBtn.frame = CGRectMake(0, 0, 60, 44);
-    
-    [self.leftBtn setImage:[UIImage imageNamed:@"btn_chengshi"] forState:UIControlStateNormal];
-    [self.leftBtn addTarget:self action:@selector(makeAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
-    self.leftBtn.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    [self showLeftBtn];
     
     [self.view addSubview:self.segmentControl];
     [self.view addSubview:self.pullrefreshV];
@@ -156,7 +148,7 @@
 }
 - (PullingRefreshTableView *)pullrefreshV{
     if (_pullrefreshV == nil) {
-        self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight - 40)pullingDelegate:self];
+        self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight-100)pullingDelegate:self];
         self.pullrefreshV.delegate = self;
         self.pullrefreshV.dataSource = self;
         if (self.classifyListType == ClassifyListTypeRecommend) {
@@ -236,7 +228,7 @@
 - (void)getMediaRequest{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", nil];
-    [ProgressHUD show:@"拼命加载中···"];
+    [ProgressHUD show:@"别催，加载着呢~"];
     [sessionManager GET:kMedia parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

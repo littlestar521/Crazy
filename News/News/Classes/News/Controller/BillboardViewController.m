@@ -11,6 +11,7 @@
 #import "SetView.h"
 #import "MainTableViewCell.h"
 #import "MainModel.h"
+#import "ProgressHUD.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 @interface BillboardViewController ()<PushVCDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -32,14 +33,7 @@
     // Do any additional setup after loading the view.
     self.title = @"排行榜";
     self.navigationController.navigationBar.backgroundColor = MineColor;
-    self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.leftBtn.frame = CGRectMake(0, 0, 60, 44);
-    
-    [self.leftBtn setImage:[UIImage imageNamed:@"btn_chengshi"] forState:UIControlStateNormal];
-    [self.leftBtn addTarget:self action:@selector(makeAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
-    self.leftBtn.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = leftBarBtn;
+    [self showLeftBtn];
     
     [self.view addSubview:self.segmentControl];
     [self.view addSubview:self.tableView];
@@ -53,14 +47,6 @@
 - (void)getOtherViewController:(UIViewController *)otherVC{
     [self.navigationController pushViewController:otherVC animated:YES];
 }
-- (void)makeAction:(UIButton *)btn{
-    
-    SetView *setView = [[SetView alloc]init];
-    setView.delegate = self;
-    [self.view addSubview:setView];
-
-}
-
 #pragma mark ---------- UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.billboardNum == BillboardTypeRead) {
@@ -100,7 +86,7 @@
 }
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight - 40)];
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight-100)];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.rowHeight = 150;
@@ -128,8 +114,11 @@
     
         AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
         sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
+        [ProgressHUD show:@"别催，加载着呢~"];
         [sessionManager GET:kRead parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [ProgressHUD showSuccess:@"已加载~"];
+
             if (self.readArray.count > 0) {
                 [self.readArray removeAllObjects];
             }
@@ -142,14 +131,17 @@
             [self showSelectBtn];
             [self.tableView reloadData];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
         }];
 }
 - (void)showLikeRequest{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
-    
+    [ProgressHUD show:@"别催，加载着呢~"];
     [sessionManager GET:kLike parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD showSuccess:@"已加载~"];
+
         if (self.likeArray.count > 0) {
             [self.likeArray removeAllObjects];
         }
@@ -162,13 +154,17 @@
         [self showSelectBtn];
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
     }];
 }
 - (void)showCommentRequest{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
+    [ProgressHUD show:@"别催，加载着呢~"];
     [sessionManager GET:kComment parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [ProgressHUD showSuccess:@"已加载~"];
+
         if (self.commentArray.count > 0) {
             [self.commentArray removeAllObjects];
         }
@@ -181,6 +177,7 @@
         [self showSelectBtn];
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
     }];
 }
 - (void)showSelectBtn{

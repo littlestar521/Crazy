@@ -26,19 +26,23 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-8P-5Yz">
                         <rect key="frame" x="8" y="240" width="77" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-Df-bo0">
                         <rect key="frame" x="240" y="240" width="24" height="25"/>
-                        <state key="normal" title="Button" image="btn_article_like_nor"/>
+                        <state key="normal" title="Button" image="btn_article_like_nor">
+                            <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                         <connections>
                             <action selector="likeBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YPG-ST-nld"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR2-5a-xDj">
                         <rect key="frame" x="287" y="240" width="24" height="25"/>
-                        <state key="normal" title="Button" image="btn_video_reply_nor"/>
+                        <state key="normal" title="Button" image="btn_video_reply_nor">
+                            <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                         <connections>
                             <action selector="commentBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9dm-wx-1jB"/>
                         </connections>

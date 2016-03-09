@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "btn_chengshi@2x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "btn_chengshi@2x.png",
       "scale" : "2x"
     },
     {

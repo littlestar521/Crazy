@@ -25,12 +25,8 @@
     [self.view addSubview:webView];
     [webView loadRequest:request];
     
-    [self detaildata];
 }
-- (void)detaildata{
-    
-    
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -9,6 +9,9 @@
 #import "SetView.h"
 #import "MainViewController.h"
 #import "BillboardViewController.h"
+#import "ListViewController.h"
+#import "SetViewController.h"
+#import "SelfViewController.h"
 @interface SetView ()
 @property(nonatomic,strong)UIView *setView;
 @property(nonatomic,strong)UIView *backView;
@@ -37,7 +40,8 @@
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loginBtn.frame = CGRectMake(0, 0, kScreenWidth-100, 150);
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [loginBtn setTitle:@"个人" forState:UIControlStateNormal];
+    [loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     loginBtn.titleEdgeInsets = UIEdgeInsetsMake(100, -220, 0, 0);
     
     [loginBtn setBackgroundColor:MineColor];
@@ -76,6 +80,15 @@
         self.backView.alpha = 0.0;
     }];
 }
+- (void)loginAction{
+    [self disapearAction];
+    UIStoryboard *selfSB = [UIStoryboard storyboardWithName:@"Self" bundle:nil];
+    SelfViewController *selfVC = [selfSB instantiateViewControllerWithIdentifier:@"Self"];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
+        [self.delegate getOtherViewController:selfVC];
+        [selfVC popoverPresentationController];
+    }
+}
 - (void)setSelectAction:(UIButton *)btn{
     [self disapearAction];
     switch (btn.tag) {
@@ -99,13 +112,27 @@
             
             break;
         case 102:
-
+        {
+            ListViewController *listVC = [[ListViewController alloc]init];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
+                [self.delegate getOtherViewController:listVC];
+                [listVC popoverPresentationController];
+            }
+        }
             break;
         case 103:
-
+        {
+        }
             break;
         case 104:
-
+        {
+            UIStoryboard *setSB = [UIStoryboard storyboardWithName:@"Set" bundle:nil];
+            SetViewController *setVC = [setSB instantiateViewControllerWithIdentifier:@"Set"];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
+                [self.delegate getOtherViewController:setVC];
+                [setVC popoverPresentationController];
+            }
+        }
             break;
         case 105:
 

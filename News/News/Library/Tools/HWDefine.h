@@ -33,4 +33,10 @@ typedef NS_ENUM(NSInteger,BillboardType) {
 #define kLike @"http://dailyapi.ibaozou.com/api/v1/rank/vote/day"
 //评论
 #define kComment @"http://dailyapi.ibaozou.com/api/v1/rank/comment/day"
+//栏目接口
+#define kList @"http://dailyapi.ibaozou.com/api/v1/sections"
+//新浪微博分享
+#define kAppKey @"1518687280"
+#define kRedirectURI @"http://api.weibo.com/oauth2/default.html"
+
 #endif /* HWDefine_h */

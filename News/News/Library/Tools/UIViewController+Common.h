@@ -10,4 +10,5 @@
 
 @interface UIViewController (Common)
 - (void)showBackBtn;
+- (void)showLeftBtn;
 @end
