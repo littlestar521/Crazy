@@ -8,6 +8,7 @@
 
 #import "MainTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+forRGB.h"
 @interface MainTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -25,8 +26,22 @@
     
     [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:model.thumbnail] placeholderImage:nil];
     self.titleLabel.text = model.title;
-    self.name.text = model.section_name;
-    self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.source_name,model.hit_count];
+    
+    if (!model.name) {
+        self.name.text = model.section_name;
+        UIColor *color = [[UIColor alloc]init];
+        self.name.textColor = [color getRGB:model.section_color];
+    }else{
+        self.name.text = [NSString stringWithFormat:@"%@ 推荐",model.name];
+    }
+    
+    if (model.author_name) {
+        self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.author_name,model.hit_count];
+        self.name.text = model.section_name;
+    }else{
+        self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.source_name,model.hit_count];
+    }
+    
     
 
     

@@ -63,7 +63,6 @@
 - (void)disappearAction{
     [UIView animateWithDuration:2.0 animations:^{
     [self.blackView removeFromSuperview];
-//    self.shareView.frame = CGRectMake(0, 0, 0, 0);
     [self.shareView removeFromSuperview];
         
     
@@ -105,10 +104,10 @@
 //朋友圈
 - (void)friendsAction{
     WXMediaMessage *message = [WXMediaMessage message];
-    [message setThumbImage:[UIImage imageNamed:@"Best周末.jpg"]];
+    [message setThumbImage:[UIImage imageNamed:@"0.png"]];
     //缩略图
     WXImageObject *imageObject = [WXImageObject object];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Best周末" ofType:@".jpg"];//图片路径
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@".png"];//图片路径
     imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
     message.mediaObject = imageObject;
     SendMessageToWXReq *request = [[SendMessageToWXReq alloc]init];

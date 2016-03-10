@@ -9,6 +9,8 @@
 #import "MediaTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "SelfViewController.h"
+#import "ShareView.h"
 @interface MediaTableViewCell ()
 
 @property(nonatomic,strong)NSString *url;
@@ -38,12 +40,14 @@
     // Initialization code
 }
 -(void)setModel:(MediaModel *)model{
+    
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
     self.titleLabel.text = model.title;
     self.playCount.text = [NSString stringWithFormat:@"%@ 播放",model.play_count];
     [self.likeBtn setTitle:model.vote_count forState:UIControlStateNormal];
     [self.commentBtn setTitle:model.comment_count forState:UIControlStateNormal];
-    self.palyTime.text = model.play_time;
+    NSInteger time = [model.play_time integerValue];
+    self.palyTime.text = [NSString stringWithFormat:@"%lu:%02lu",time/60,time%60];
     self.url = model.first_url;
     
     
@@ -74,11 +78,19 @@
 }
 
 - (IBAction)likeBtnAction:(id)sender {
+    SelfViewController *selfVC = [[SelfViewController alloc]init];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(getOneVC:)]) {
+        [self.delegate getOneVC:selfVC];
+        [selfVC popoverPresentationController];
+    }
+    
 }
 
 - (IBAction)commentBtnAction:(id)sender {
 }
 
 - (IBAction)shareBtnAction:(id)sender {
+    ShareView *shareView =[[ShareView alloc]init];
+    [self addSubview:shareView];
 }
 @end

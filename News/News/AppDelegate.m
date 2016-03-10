@@ -11,6 +11,8 @@
 #import "WeiboSDK.h"
 #import "WXApi.h"
 #import <CoreLocation/CoreLocation.h>
+#import <BmobSDK/BmobUser.h>
+#import <BmobSDK/Bmob.h>
 @interface AppDelegate ()<WeiboSDKDelegate,WXApiDelegate>
 @property(nonatomic,strong)NSString *wbCurrentUserID;
 @property(nonatomic,strong)NSString *wbRefreshToken;
@@ -31,11 +33,13 @@
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:mainVC];
     self.window.rootViewController = nav;
     
+    //bmob
+    [Bmob registerWithAppKey:kBmobAppKey];
     //微博
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
     //微信
-    [WXApi registerApp:@"wx963f2bc6f214e3a9"];
+    [WXApi registerApp:kAppID];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

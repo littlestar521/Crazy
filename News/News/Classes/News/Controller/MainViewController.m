@@ -12,7 +12,6 @@
 #import "MainModel.h"
 #import "PullingRefreshTableView.h"
 #import "HWTools.h"
-#import "MediaViewController.h"
 #import "DetailViewController.h"
 #import "ProgressHUD.h"
 #import "SetView.h"
@@ -47,8 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"暴走日报";
-    self.navigationController.navigationBar.backgroundColor = MineColor;
+    self.title = @"暴走集锦";
+    self.navigationController.navigationBar.barTintColor = MineColor;
     [self showLeftBtn];
     
     [self.view addSubview:self.segmentControl];
@@ -66,7 +65,8 @@
     self.pullrefreshV.tableFooterView = [[UIView alloc]init];
     self.refreshing = YES;
     self.classifyListType = ClassifyListTypeRecommend;
-    [self requestModel];
+    
+    [self.pullrefreshV launchRefreshing];
 }
 //实现自定义代理方法
 - (void)getOtherViewController:(UIViewController *)otherVC{
@@ -105,7 +105,7 @@
     if (self.classifyListType == ClassifyListTypeRecommend) {
         return 150;
     }
-    return 293;
+    return 290;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,7 +155,7 @@
             self.pullrefreshV.rowHeight = 90;
         }else if(self.classifyListType ==ClassifyListTypeMedia){
             self.pullrefreshV.backgroundColor = [[UIColor grayColor]colorWithAlphaComponent:0.4];
-            self.pullrefreshV.rowHeight = 293;
+            self.pullrefreshV.rowHeight = 290;
         }
         
         
@@ -249,7 +249,6 @@
         self.pullrefreshV.reachedTheEnd = NO;
         [self showPreviousSelectBtn];
         [self.pullrefreshV reloadData];
-        MJJLog(@"%lu",self.mediaListArray.count);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [ProgressHUD showError:[NSString stringWithFormat:@"网络有误!!!%@",error]];
     }];

@@ -38,7 +38,8 @@
 
 }
 - (void)backBtnAction:(UIButton *)btn{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)makeAction:(UIButton *)btn{
     SetView *setView = [[SetView alloc]init];

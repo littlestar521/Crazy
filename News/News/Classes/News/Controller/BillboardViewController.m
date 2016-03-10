@@ -12,6 +12,7 @@
 #import "MainTableViewCell.h"
 #import "MainModel.h"
 #import "ProgressHUD.h"
+#import "DetailViewController.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 @interface BillboardViewController ()<PushVCDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -80,6 +81,20 @@
     }
     return cell;
     
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailViewController *detailVC =[[DetailViewController alloc]init];
+    if (self.billboardNum == BillboardTypeRead) {
+        MainModel *model = self.readArray[indexPath.row];
+        detailVC.data = model.share_url;
+    }else if (self.billboardNum == BillboardTypeLike){
+        MainModel *model = self.likeArray[indexPath.row];
+        detailVC.data = model.share_url;
+    }else{
+        MainModel *model = self.commentArray[indexPath.row];
+        detailVC.data = model.share_url;
+    }
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 150;

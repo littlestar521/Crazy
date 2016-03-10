@@ -70,13 +70,14 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="imageV" destination="RsN-M9-Snb" id="DjG-vD-Oe1"/>
                         <outlet property="passwordTextFiled" destination="MMG-7G-rNZ" id="qno-QM-pC6"/>
                         <outlet property="ueerNameTextFiled" destination="013-To-oSv" id="OEQ-Eh-Kad"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXq-uh-CgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564.5" y="400.5"/>
+            <point key="canvasLocation" x="269.5" y="322.5"/>
         </scene>
         <!--注册-->
         <scene sceneID="3cR-Do-Ind">
@@ -151,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUU-Wd-Wfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536.5" y="372.5"/>
+            <point key="canvasLocation" x="262.5" y="281.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QCG-gs-WCv">
@@ -170,7 +171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m28-V7-wLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348.5" y="380.5"/>
+            <point key="canvasLocation" x="141.5" y="322.5"/>
         </scene>
     </scenes>
     <resources>

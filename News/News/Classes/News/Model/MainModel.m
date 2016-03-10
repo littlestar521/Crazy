@@ -20,13 +20,22 @@
         self.image = dic[@"image"];
         self.link = dic[@"link"];
         self.url = dic[@"url"];
-        self.name = dic[@"name"];
+        
         self.title = dic[@"title"];
         self.source_name = dic[@"source_name"];
         self.thumbnail = dic[@"thumbnail"];
         self.section_name = dic[@"section_name"];
         self.share_url = dic[@"share_url"];
         self.author_name = dic[@"author_name"];
+        self.section_color = dic[@"section_color"];
+        self.recommenders = dic[@"recommenders"];
+        if (self.recommenders.count > 0) {
+            NSDictionary *recomDic = _recommenders[0];
+            self.avatar = recomDic[@"avatar"];
+            self.name = recomDic[@"name"];
+        }
+        
+        
     }
     return self;
 }

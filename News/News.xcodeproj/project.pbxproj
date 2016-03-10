@@ -46,15 +46,14 @@
 		F34C1FDC1C8EF50800895972 /* Like.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDB1C8EF50800895972 /* Like.plist */; };
 		F34C1FDE1C8EF5C700895972 /* Read.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDD1C8EF5C700895972 /* Read.plist */; };
 		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
+		F37F8A0B1C91ABF10068AF7F /* UIColor+forRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */; };
 		F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA41C8D60B80050E512 /* UIViewController+Common.m */; };
 		F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA71C8D70580050E512 /* MediaTableViewCell.m */; };
 		F3883BAA1C8D70580050E512 /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3883BA81C8D70580050E512 /* MediaTableViewCell.xib */; };
 		F3B08F401C8A923E000F1535 /* HWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B08F3F1C8A923E000F1535 /* HWTools.m */; };
-		F3B08F431C8AAC3A000F1535 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B08F421C8AAC3A000F1535 /* MediaViewController.m */; };
 		F3B08F461C8AAC71000F1535 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B08F451C8AAC71000F1535 /* DetailViewController.m */; };
 		F3B489CE1C8C275E0018BC9F /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3B489CD1C8C275E0018BC9F /* Property List.plist */; };
 		F3B489D11C8C2F340018BC9F /* SetView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B489D01C8C2F340018BC9F /* SetView.m */; };
-		F3C4AB291C88211400BF49E3 /* Third.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB281C88211400BF49E3 /* Third.plist */; };
 		F3C4AB301C883E4500BF49E3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB2E1C883E4500BF49E3 /* MainViewController.m */; };
 		F3C4AB3B1C88400F00BF49E3 /* VOContentLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB341C88400F00BF49E3 /* VOContentLayer.m */; };
 		F3C4AB3C1C88400F00BF49E3 /* VOIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB361C88400F00BF49E3 /* VOIndicatorAnimation.m */; };
@@ -145,6 +144,8 @@
 		F34C1FDD1C8EF5C700895972 /* Read.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Read.plist; sourceTree = "<group>"; };
 		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		F37F8A091C91ABF10068AF7F /* UIColor+forRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+forRGB.h"; sourceTree = "<group>"; };
+		F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+forRGB.m"; sourceTree = "<group>"; };
 		F3883BA31C8D60B80050E512 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Common.h"; sourceTree = "<group>"; };
 		F3883BA41C8D60B80050E512 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Common.m"; sourceTree = "<group>"; };
 		F3883BA61C8D70580050E512 /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
@@ -152,14 +153,11 @@
 		F3883BA81C8D70580050E512 /* MediaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
 		F3B08F3E1C8A923E000F1535 /* HWTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTools.h; sourceTree = "<group>"; };
 		F3B08F3F1C8A923E000F1535 /* HWTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTools.m; sourceTree = "<group>"; };
-		F3B08F411C8AAC3A000F1535 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = ../../News/Controller/MediaViewController.h; sourceTree = "<group>"; };
-		F3B08F421C8AAC3A000F1535 /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaViewController.m; path = ../../News/Controller/MediaViewController.m; sourceTree = "<group>"; };
 		F3B08F441C8AAC71000F1535 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F3B08F451C8AAC71000F1535 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F3B489CD1C8C275E0018BC9F /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		F3B489CF1C8C2F340018BC9F /* SetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetView.h; sourceTree = "<group>"; };
 		F3B489D01C8C2F340018BC9F /* SetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetView.m; sourceTree = "<group>"; };
-		F3C4AB281C88211400BF49E3 /* Third.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Third.plist; sourceTree = "<group>"; };
 		F3C4AB2D1C883E4500BF49E3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F3C4AB2E1C883E4500BF49E3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F3C4AB331C88400F00BF49E3 /* VOContentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOContentLayer.h; sourceTree = "<group>"; };
@@ -332,6 +330,8 @@
 			children = (
 				F3C4AB3F1C88429800BF49E3 /* Main.pch */,
 				F31F75271C87D42F00E847F3 /* HWDefine.h */,
+				F37F8A091C91ABF10068AF7F /* UIColor+forRGB.h */,
+				F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */,
 				F3B08F3E1C8A923E000F1535 /* HWTools.h */,
 				F3B08F3F1C8A923E000F1535 /* HWTools.m */,
 				F3883BA31C8D60B80050E512 /* UIViewController+Common.h */,
@@ -344,75 +344,8 @@
 			isa = PBXGroup;
 			children = (
 				F31F75351C87E5FD00E847F3 /* News */,
-				F31F752D1C87E5FD00E847F3 /* Media */,
-				F31F75311C87E5FD00E847F3 /* Mine */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		F31F752D1C87E5FD00E847F3 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				F31F752E1C87E5FD00E847F3 /* Controller */,
-				F31F752F1C87E5FD00E847F3 /* Model */,
-				F31F75301C87E5FD00E847F3 /* Views */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		F31F752E1C87E5FD00E847F3 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				F3B08F411C8AAC3A000F1535 /* MediaViewController.h */,
-				F3B08F421C8AAC3A000F1535 /* MediaViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		F31F752F1C87E5FD00E847F3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F31F75301C87E5FD00E847F3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F31F75311C87E5FD00E847F3 /* Mine */ = {
-			isa = PBXGroup;
-			children = (
-				F31F75321C87E5FD00E847F3 /* Controller */,
-				F31F75331C87E5FD00E847F3 /* Model */,
-				F31F75341C87E5FD00E847F3 /* Views */,
-			);
-			path = Mine;
-			sourceTree = "<group>";
-		};
-		F31F75321C87E5FD00E847F3 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		F31F75331C87E5FD00E847F3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F3C4AB281C88211400BF49E3 /* Third.plist */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F31F75341C87E5FD00E847F3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		F31F75351C87E5FD00E847F3 /* News */ = {
@@ -634,7 +567,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C4AB291C88211400BF49E3 /* Third.plist in Resources */,
 				F33531F91C9000BB007A0751 /* WeiboSDK.bundle in Resources */,
 				F3D359E51C8FCACA006CB043 /* Set.storyboard in Resources */,
 				F34C1FDC1C8EF50800895972 /* Like.plist in Resources */,
@@ -713,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B08F401C8A923E000F1535 /* HWTools.m in Sources */,
+				F37F8A0B1C91ABF10068AF7F /* UIColor+forRGB.m in Sources */,
 				F3C4AB3B1C88400F00BF49E3 /* VOContentLayer.m in Sources */,
 				F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */,
 				F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */,
@@ -726,7 +659,6 @@
 				F3C4AB301C883E4500BF49E3 /* MainViewController.m in Sources */,
 				F3D359D61C8FABB9006CB043 /* ListViewController.m in Sources */,
 				F31F75161C87D36C00E847F3 /* main.m in Sources */,
-				F3B08F431C8AAC3A000F1535 /* MediaViewController.m in Sources */,
 				F3D359E01C8FBE52006CB043 /* ListModel.m in Sources */,
 				F3C4AB4B1C88671700BF49E3 /* MainTableViewCell.m in Sources */,
 				F3EFCC391C8ECCA30096756D /* BillboardViewController.m in Sources */,
@@ -840,6 +772,8 @@
 			baseConfigurationReference = 3C77B96438C6C3D9C46F03B4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/News/Library/Bmob_SDK_iOS_v1.6.6",
@@ -855,7 +789,7 @@
 					"$(PROJECT_DIR)/News/Library/libWeiboSDK/SDKExport",
 					"$(PROJECT_DIR)/News/Library/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = can.Mangoinc.News;
+				PRODUCT_BUNDLE_IDENTIFIER = can.majuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -866,6 +800,8 @@
 			baseConfigurationReference = B3C194C46927D4B1D664EED4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/News/Library/Bmob_SDK_iOS_v1.6.6",
@@ -881,7 +817,7 @@
 					"$(PROJECT_DIR)/News/Library/libWeiboSDK/SDKExport",
 					"$(PROJECT_DIR)/News/Library/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = can.Mangoinc.News;
+				PRODUCT_BUNDLE_IDENTIFIER = can.majuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -86,7 +86,7 @@
     Class mailClass = NSClassFromString(@"");
     if (mailClass != nil) {
         if ([MFMailComposeViewController canSendMail]) {
-            
+//
             //初始化
             MFMailComposeViewController *mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
@@ -107,8 +107,11 @@
         MJJLog(@"当前设备不支持");
     }
 }
+//邮件发送完成调用的方法
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
     switch (result)
     {
         case MFMailComposeResultCancelled: //取消

@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "MediaModel.h"
+
+@protocol MediaDelegate <NSObject>
+
+- (void)getOneVC:(UIViewController *)oneVC;
+
+@end
 @interface MediaTableViewCell : UITableViewCell
 
 
 @property(nonatomic,strong)MediaModel *model;
+
+@property(nonatomic,strong)id<MediaDelegate>delegate;
 
 
 @end

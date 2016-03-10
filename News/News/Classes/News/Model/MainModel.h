@@ -26,6 +26,9 @@
 @property(nonatomic,copy)NSString *section_name;
 @property(nonatomic,copy)NSString *share_url;
 @property(nonatomic,copy)NSString *author_name;
+@property(nonatomic,copy)NSString *section_color;
+@property(nonatomic,copy)NSArray *recommenders;
+@property(nonatomic,copy)NSString *avatar;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end
