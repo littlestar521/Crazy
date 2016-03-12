@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger,BillboardType) {
 #define kComment @"http://dailyapi.ibaozou.com/api/v1/rank/comment/day"
 //栏目接口
 #define kList @"http://dailyapi.ibaozou.com/api/v1/sections"
+//搜索
+#define kSearch @"http://dailyapi.ibaozou.com/api/v1/articles/search"
 //新浪微博分享
 #define kAppKey @"2439357515"
 #define kRedirectURI @"http://api.weibo.com/oauth2/default.html"
@@ -44,5 +46,6 @@ typedef NS_ENUM(NSInteger,BillboardType) {
 #define kAppID @"wxd4a0b906317ef2e3"
 //bmob
 #define kBmobAppKey @"1596dffd91cde0c81728dd0a03e8070a"
+
 
 #endif /* HWDefine_h */

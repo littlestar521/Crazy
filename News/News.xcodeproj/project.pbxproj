@@ -46,6 +46,7 @@
 		F34C1FDC1C8EF50800895972 /* Like.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDB1C8EF50800895972 /* Like.plist */; };
 		F34C1FDE1C8EF5C700895972 /* Read.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDD1C8EF5C700895972 /* Read.plist */; };
 		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
+		F3766C7A1C92579100C21966 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3766C791C92579100C21966 /* SearchViewController.m */; };
 		F37F8A0B1C91ABF10068AF7F /* UIColor+forRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */; };
 		F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA41C8D60B80050E512 /* UIViewController+Common.m */; };
 		F3883BA91C8D70580050E512 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA71C8D70580050E512 /* MediaTableViewCell.m */; };
@@ -67,6 +68,7 @@
 		F3C4AB591C8868C500BF49E3 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB561C8868C500BF49E3 /* ProgressHUD.bundle */; };
 		F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C4AB581C8868C500BF49E3 /* ProgressHUD.m */; };
 		F3C4AB5C1C8875EB00BF49E3 /* Main.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3C4AB5B1C8875EB00BF49E3 /* Main.plist */; };
+		F3D205491C92B5FF003505BA /* Search.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D205481C92B5FF003505BA /* Search.plist */; };
 		F3D359D61C8FABB9006CB043 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D359D51C8FABB9006CB043 /* ListViewController.m */; };
 		F3D359DA1C8FACEF006CB043 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D359D81C8FACEF006CB043 /* ListTableViewCell.m */; };
 		F3D359DB1C8FACEF006CB043 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D359D91C8FACEF006CB043 /* ListTableViewCell.xib */; };
@@ -144,6 +146,8 @@
 		F34C1FDD1C8EF5C700895972 /* Read.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Read.plist; sourceTree = "<group>"; };
 		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		F3766C781C92579100C21966 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		F3766C791C92579100C21966 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F37F8A091C91ABF10068AF7F /* UIColor+forRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+forRGB.h"; sourceTree = "<group>"; };
 		F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+forRGB.m"; sourceTree = "<group>"; };
 		F3883BA31C8D60B80050E512 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Common.h"; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		F3C4AB571C8868C500BF49E3 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		F3C4AB581C8868C500BF49E3 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		F3C4AB5B1C8875EB00BF49E3 /* Main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Main.plist; sourceTree = "<group>"; };
+		F3D205481C92B5FF003505BA /* Search.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Search.plist; sourceTree = "<group>"; };
 		F3D359D41C8FABB8006CB043 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		F3D359D51C8FABB9006CB043 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		F3D359D71C8FACEF006CB043 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
@@ -375,6 +380,8 @@
 				F33532061C901B1F007A0751 /* RegisterViewController.m */,
 				F33532081C902930007A0751 /* SelfViewController.h */,
 				F33532091C902930007A0751 /* SelfViewController.m */,
+				F3766C781C92579100C21966 /* SearchViewController.h */,
+				F3766C791C92579100C21966 /* SearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -389,6 +396,7 @@
 				F34C1FDB1C8EF50800895972 /* Like.plist */,
 				F34C1FD91C8EF42A00895972 /* Comment.plist */,
 				F3D359DC1C8FBDA2006CB043 /* List.plist */,
+				F3D205481C92B5FF003505BA /* Search.plist */,
 				F352E1801C89187000974874 /* MainModel.h */,
 				F352E1811C89187000974874 /* MainModel.m */,
 				F31D6A2B1C8D7F2F009DF93B /* MediaModel.h */,
@@ -575,6 +583,7 @@
 				F31F751B1C87D36C00E847F3 /* Assets.xcassets in Resources */,
 				F3D359DB1C8FACEF006CB043 /* ListTableViewCell.xib in Resources */,
 				F3C4AB4C1C88671700BF49E3 /* MainTableViewCell.xib in Resources */,
+				F3D205491C92B5FF003505BA /* Search.plist in Resources */,
 				F3C4AB521C8868BC00BF49E3 /* blueArrow.png in Resources */,
 				F3C4AB591C8868C500BF49E3 /* ProgressHUD.bundle in Resources */,
 				F3883BAA1C8D70580050E512 /* MediaTableViewCell.xib in Resources */,
@@ -648,6 +657,7 @@
 				F37F8A0B1C91ABF10068AF7F /* UIColor+forRGB.m in Sources */,
 				F3C4AB3B1C88400F00BF49E3 /* VOContentLayer.m in Sources */,
 				F31F75191C87D36C00E847F3 /* AppDelegate.m in Sources */,
+				F3766C7A1C92579100C21966 /* SearchViewController.m in Sources */,
 				F3C4AB5A1C8868C500BF49E3 /* ProgressHUD.m in Sources */,
 				F33532011C9003D4007A0751 /* ShareView.m in Sources */,
 				F31D6A2D1C8D7F2F009DF93B /* MediaModel.m in Sources */,

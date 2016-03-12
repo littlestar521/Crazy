@@ -96,8 +96,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="efn-Yw-uuW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="YJA-Tb-ULF" id="sqP-b6-s4J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFx-qc-9jT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="YJA-Tb-ULF">
+                    <connections>
+                        <outlet property="delegate" destination="dDN-hF-fG6" id="gbW-3R-fGz"/>
+                        <outlet property="searchContentsController" destination="dDN-hF-fG6" id="Emt-ND-rra"/>
+                        <outlet property="searchResultsDataSource" destination="dDN-hF-fG6" id="LWM-gZ-bMi"/>
+                        <outlet property="searchResultsDelegate" destination="dDN-hF-fG6" id="nNp-yx-cYQ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="316.5" y="371.5"/>
         </scene>

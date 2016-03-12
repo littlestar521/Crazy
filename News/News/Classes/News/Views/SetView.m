@@ -12,7 +12,11 @@
 #import "ListViewController.h"
 #import "SetViewController.h"
 #import "SelfViewController.h"
+#import "SearchViewController.h"
 @interface SetView ()
+{
+    BOOL night;
+}
 @property(nonatomic,strong)UIView *setView;
 @property(nonatomic,strong)UIView *backView;
 
@@ -35,8 +39,6 @@
     self.backView.backgroundColor = [UIColor blackColor];
     self.backView.alpha = 0.0;
     [window addSubview:self.backView];
-    
-    
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loginBtn.frame = CGRectMake(0, 0, kScreenWidth-100, 150);
@@ -89,11 +91,12 @@
         [selfVC popoverPresentationController];
     }
 }
+
 - (void)setSelectAction:(UIButton *)btn{
-    [self disapearAction];
     switch (btn.tag) {
         case 100:
         {
+            [self disapearAction];
             MainViewController *mainVC = [[MainViewController alloc] init];
             if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
                 [self.delegate getOtherViewController:mainVC];
@@ -103,16 +106,17 @@
             break;
         case 101:
         {
+            [self disapearAction];
             BillboardViewController *billboardVC = [[BillboardViewController alloc]init];
             if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
                 [self.delegate getOtherViewController:billboardVC];
                 [billboardVC popoverPresentationController];
             }
         }
-            
             break;
         case 102:
         {
+            [self disapearAction];
             ListViewController *listVC = [[ListViewController alloc]init];
             if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
                 [self.delegate getOtherViewController:listVC];
@@ -122,10 +126,17 @@
             break;
         case 103:
         {
+            [self disapearAction];
+            SearchViewController *searchVC = [[SearchViewController alloc]init];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
+                [self.delegate getOtherViewController:searchVC];
+//                [searchVC popoverPresentationController];
+            }
         }
             break;
         case 104:
         {
+            [self disapearAction];
             UIStoryboard *setSB = [UIStoryboard storyboardWithName:@"Set" bundle:nil];
             SetViewController *setVC = [setSB instantiateViewControllerWithIdentifier:@"Set"];
             if (self.delegate && [self.delegate respondsToSelector:@selector(getOtherViewController:)]) {
@@ -135,9 +146,30 @@
         }
             break;
         case 105:
-
+        {
+            
+            if (night) {
+                [btn setImage:[UIImage imageNamed:@"icon_5"] forState:UIControlStateNormal];
+                [btn setTitle:@"夜间模式" forState:UIControlStateNormal];
+                UIWindow *window = [[UIApplication sharedApplication].delegate window];
+                window.backgroundColor = [UIColor blackColor];
+                self.window.alpha = 0.3;
+                night = 0;
+            }else{
+                [btn setImage:[UIImage imageNamed:@"icon_sidebar_sun"] forState:UIControlStateNormal];
+                [btn setTitle:@"白天模式" forState:UIControlStateNormal];
+                UIWindow *window = [[UIApplication sharedApplication].delegate window];
+                window.backgroundColor = [UIColor whiteColor];
+                self.window.alpha = 1.0;
+                night = 1;
+            }
+           
+        }
             break;
         case 106:
+        {
+            [self disapearAction];
+        }
 
             break;
             

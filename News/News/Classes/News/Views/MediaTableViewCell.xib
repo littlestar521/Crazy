@@ -23,14 +23,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-8P-5Yz">
-                        <rect key="frame" x="8" y="240" width="77" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-Df-bo0">
-                        <rect key="frame" x="213" y="240" width="40" height="29"/>
+                        <rect key="frame" x="214" y="241" width="40" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                         <state key="normal" image="btn_article_like_nor">
@@ -41,7 +35,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR2-5a-xDj">
-                        <rect key="frame" x="275" y="240" width="36" height="29"/>
+                        <rect key="frame" x="276" y="238" width="36" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="13" maxY="0.0"/>
                         <state key="normal" image="btn_video_reply_nor">
@@ -52,7 +46,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GF-6g-hRH">
-                        <rect key="frame" x="326" y="238" width="34" height="33"/>
+                        <rect key="frame" x="326" y="237" width="34" height="33"/>
                         <state key="normal" title="Button" image="btn_article_share"/>
                         <connections>
                             <action selector="shareBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="odS-Yj-THX"/>
@@ -81,6 +75,12 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-8P-5Yz">
+                        <rect key="frame" x="13" y="238" width="77" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
@@ -93,7 +93,7 @@
                 <outlet property="shareBtn" destination="0GF-6g-hRH" id="BRu-rH-2GA"/>
                 <outlet property="titleLabel" destination="P5F-eG-EEt" id="qXz-Tx-nCf"/>
             </connections>
-            <point key="canvasLocation" x="817.5" y="381"/>
+            <point key="canvasLocation" x="829.5" y="394"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -83,10 +83,12 @@
 }
 //反馈与帮助
 - (IBAction)helpAction:(id)sender {
+    [self performSelector:@selector(alertAction) withObject:nil afterDelay:2.0];
+    [ProgressHUD showSuccess:@"反馈成功~"];
     Class mailClass = NSClassFromString(@"");
     if (mailClass != nil) {
         if ([MFMailComposeViewController canSendMail]) {
-//
+    
             //初始化
             MFMailComposeViewController *mailVC = [[MFMailComposeViewController alloc] init];
             mailVC.mailComposeDelegate = self;
@@ -131,6 +133,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)alertAction{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"友情提示：" message:@"感谢您的宝贵建议！！！" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 //计算缓存大小
 //检测版本
 - (void)checkAppversion{

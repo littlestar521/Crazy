@@ -42,9 +42,6 @@
         self.source_nameLabel.text = [NSString stringWithFormat:@"%@ | %@ 阅读",model.source_name,model.hit_count];
     }
     
-    
-
-    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
