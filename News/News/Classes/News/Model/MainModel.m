@@ -29,6 +29,7 @@
         self.author_name = dic[@"author_name"];
         self.section_color = dic[@"section_color"];
         self.recommenders = dic[@"recommenders"];
+        self.uniq_id = dic[@"uniq_id"];
         if (self.recommenders.count > 0) {
             NSDictionary *recomDic = _recommenders[0];
             self.avatar = recomDic[@"avatar"];

@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger,BillboardType) {
 #define kComment @"http://dailyapi.ibaozou.com/api/v1/rank/comment/day"
 //栏目接口
 #define kList @"http://dailyapi.ibaozou.com/api/v1/sections"
+//栏目详情
+#define kListDetail @"http://dailyapi.ibaozou.com/api/v1/section/%@"
 //搜索
 #define kSearch @"http://dailyapi.ibaozou.com/api/v1/articles/search"
 //新浪微博分享

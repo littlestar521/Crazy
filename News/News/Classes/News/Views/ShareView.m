@@ -26,7 +26,7 @@
 - (void)configView{
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     
-    self.shareView = [[UIView alloc] initWithFrame:CGRectMake(0, -667, 0, 0)];
+    self.shareView = [[UIView alloc] initWithFrame:CGRectMake(0, -kScreenHeight, 0, 0)];
     self.shareView.layer.cornerRadius = 5;
     self.shareView.backgroundColor = [UIColor whiteColor];
     
@@ -38,21 +38,21 @@
     
     [UIView animateWithDuration:1.0 animations:^{
         self.blackView.alpha = 0.5;
-        self.shareView.frame = CGRectMake(30, 300, kScreenWidth - 60, 150);
+        self.shareView.frame = CGRectMake(30, kScreenHeight/2, kScreenWidth - 60, 120);
         
     }];
     UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    weiboBtn.frame = CGRectMake(40, 20, 70, 70);
+    weiboBtn.frame = CGRectMake(kScreenWidth/9-20, 20, 70, 70);
     [weiboBtn setImage:[UIImage imageNamed:@"sharesinaweibo_selector"] forState:UIControlStateNormal];
     [weiboBtn addTarget:self action:@selector(weiboAction) forControlEvents:UIControlEventTouchUpInside];
     [self.shareView addSubview:weiboBtn];
     UIButton *weixinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    weixinBtn.frame = CGRectMake(200, 20, 70, 70);
+    weixinBtn.frame = CGRectMake(kScreenWidth/9-20+160, 20, 70, 70);
     [weixinBtn setImage:[UIImage imageNamed:@"shareweixin_selector"] forState:UIControlStateNormal];
     [weixinBtn addTarget:self action:@selector(weixinAction) forControlEvents:UIControlEventTouchUpInside];
     [self.shareView addSubview:weixinBtn];
     UIButton *friendsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    friendsBtn.frame = CGRectMake(120, 20, 70, 70);
+    friendsBtn.frame = CGRectMake(kScreenWidth/9-20+80, 20, 70, 70);
     [friendsBtn setImage:[UIImage imageNamed:@"shareweixin_friends_selector"] forState:UIControlStateNormal];
     [friendsBtn addTarget:self action:@selector(friendsAction) forControlEvents:UIControlEventTouchUpInside];
     [self.shareView addSubview:friendsBtn];

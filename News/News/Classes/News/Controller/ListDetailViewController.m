@@ -1,90 +1,79 @@
+
 //
-//  ListViewController.m
+//  ListDetailViewController.m
 //  News
 //
-//  Created by scjy on 16/3/9.
+//  Created by scjy on 16/3/12.
 //  Copyright © 2016年 马娟娟. All rights reserved.
 //
 
-#import "ListViewController.h"
-#import "SetView.h"
-#import "ListTableViewCell.h"
-#import "MainModel.h"
-#import <AFNetworking/AFHTTPSessionManager.h>
 #import "ListDetailViewController.h"
-@interface ListViewController ()<UITableViewDataSource,UITableViewDelegate,PushVCDelegate>
+#import "MainTableViewCell.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import "DetailViewController.h"
+
+@interface ListDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *listArray;
 
 @end
 
-@implementation ListViewController
-
+@implementation ListDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"栏目";
-    [self showLeftBtn];
+    self.title = self.name;
     //注册
-    [self.tableView registerNib:[UINib nibWithNibName:@"ListTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.tableView];
-    
     [self requestModel];
-    
 }
-- (void)getOtherViewController:(UIViewController *)otherVC{
-    [self.navigationController pushViewController:otherVC animated:YES];
-}
-#pragma mark ---------------- UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+#pragma mark ---------- UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.listArray.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (indexPath.row < self.listArray.count) {
-        cell.model = self.listArray[indexPath.row];
+       
+        cell.model = self.listArray[indexPath.row] ;
     }
     return cell;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 110;
-}
+
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        self.tableView = [[UITableView alloc]initWithFrame:self.view.frame];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.rowHeight = 110;
+        self.tableView.rowHeight = 120;
     }
     return _tableView;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListDetailViewController *listVC = [[ListDetailViewController alloc]init];
+    DetailViewController *detailVC = [[DetailViewController alloc]init];
     MainModel *model = self.listArray[indexPath.row];
-    NSArray *array = [model.uniq_id componentsSeparatedByString:@":"];
-    listVC.data = array[0];
-    listVC.name = model.name;
-    [self.navigationController pushViewController:listVC animated:YES];
+    detailVC.data = model.share_url;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
-#pragma mark ---------------------- 网络请求
+#pragma mark ---------- 网络请求
 - (void)requestModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",nil];
-    [sessionManager GET:kList parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:kListDetail, self.data] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *resultDic = responseObject;
-        NSArray *data = resultDic[@"data"];
-        for (NSDictionary *dic in data) {
-            ListModel *model = [[ListModel alloc]initWithDictionary:dic];
-            [self.listArray addObject:model];
+        NSArray *articles = resultDic[@"articles"];
+        for (NSDictionary *dic in articles) {
+            MainModel *listmodel = [[MainModel alloc]initWithDictionary:dic];
+            [self.listArray addObject:listmodel];
+            NSLog(@"%@", self.listArray);
+
         }
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
-    
 }
-#pragma mark ---------------------- Lazy
 - (NSMutableArray *)listArray{
     if (_listArray == nil) {
         self.listArray = [NSMutableArray new];

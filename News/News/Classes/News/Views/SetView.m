@@ -13,10 +13,10 @@
 #import "SetViewController.h"
 #import "SelfViewController.h"
 #import "SearchViewController.h"
+static  BOOL day;
+
 @interface SetView ()
-{
-    BOOL night;
-}
+
 @property(nonatomic,strong)UIView *setView;
 @property(nonatomic,strong)UIView *backView;
 
@@ -148,20 +148,22 @@
         case 105:
         {
             
-            if (night) {
+            if (day) {
                 [btn setImage:[UIImage imageNamed:@"icon_5"] forState:UIControlStateNormal];
                 [btn setTitle:@"夜间模式" forState:UIControlStateNormal];
                 UIWindow *window = [[UIApplication sharedApplication].delegate window];
-                window.backgroundColor = [UIColor blackColor];
-                self.window.alpha = 0.3;
-                night = 0;
+                window.backgroundColor = [UIColor whiteColor];
+                self.window.alpha = 1.0;
+                day = 0;
             }else{
                 [btn setImage:[UIImage imageNamed:@"icon_sidebar_sun"] forState:UIControlStateNormal];
                 [btn setTitle:@"白天模式" forState:UIControlStateNormal];
+                btn.imageEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
+                btn.titleEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
                 UIWindow *window = [[UIApplication sharedApplication].delegate window];
-                window.backgroundColor = [UIColor whiteColor];
-                self.window.alpha = 1.0;
-                night = 1;
+                window.backgroundColor = [UIColor blackColor];
+                self.window.alpha = 0.3;
+                day = 1;
             }
            
         }

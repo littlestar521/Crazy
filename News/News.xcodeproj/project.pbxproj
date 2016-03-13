@@ -46,6 +46,8 @@
 		F34C1FDC1C8EF50800895972 /* Like.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDB1C8EF50800895972 /* Like.plist */; };
 		F34C1FDE1C8EF5C700895972 /* Read.plist in Resources */ = {isa = PBXBuildFile; fileRef = F34C1FDD1C8EF5C700895972 /* Read.plist */; };
 		F352E1821C89187000974874 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F352E1811C89187000974874 /* MainModel.m */; };
+		F36839891C93F9C3008C8AFF /* ListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F36839881C93F9C3008C8AFF /* ListDetailViewController.m */; };
+		F368398B1C9403F1008C8AFF /* ListDetail.plist in Resources */ = {isa = PBXBuildFile; fileRef = F368398A1C9403F1008C8AFF /* ListDetail.plist */; };
 		F3766C7A1C92579100C21966 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3766C791C92579100C21966 /* SearchViewController.m */; };
 		F37F8A0B1C91ABF10068AF7F /* UIColor+forRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = F37F8A0A1C91ABF10068AF7F /* UIColor+forRGB.m */; };
 		F3883BA51C8D60B80050E512 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3883BA41C8D60B80050E512 /* UIViewController+Common.m */; };
@@ -146,6 +148,9 @@
 		F34C1FDD1C8EF5C700895972 /* Read.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Read.plist; sourceTree = "<group>"; };
 		F352E1801C89187000974874 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		F352E1811C89187000974874 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		F36839871C93F9C3008C8AFF /* ListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDetailViewController.h; sourceTree = "<group>"; };
+		F36839881C93F9C3008C8AFF /* ListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDetailViewController.m; sourceTree = "<group>"; };
+		F368398A1C9403F1008C8AFF /* ListDetail.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ListDetail.plist; sourceTree = "<group>"; };
 		F3766C781C92579100C21966 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F3766C791C92579100C21966 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		F37F8A091C91ABF10068AF7F /* UIColor+forRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+forRGB.h"; sourceTree = "<group>"; };
@@ -374,6 +379,8 @@
 				F3EFCC381C8ECCA30096756D /* BillboardViewController.m */,
 				F3D359D41C8FABB8006CB043 /* ListViewController.h */,
 				F3D359D51C8FABB9006CB043 /* ListViewController.m */,
+				F36839871C93F9C3008C8AFF /* ListDetailViewController.h */,
+				F36839881C93F9C3008C8AFF /* ListDetailViewController.m */,
 				F3D359E11C8FCA99006CB043 /* SetViewController.h */,
 				F3D359E21C8FCA99006CB043 /* SetViewController.m */,
 				F33532051C901B1F007A0751 /* RegisterViewController.h */,
@@ -396,6 +403,7 @@
 				F34C1FDB1C8EF50800895972 /* Like.plist */,
 				F34C1FD91C8EF42A00895972 /* Comment.plist */,
 				F3D359DC1C8FBDA2006CB043 /* List.plist */,
+				F368398A1C9403F1008C8AFF /* ListDetail.plist */,
 				F3D205481C92B5FF003505BA /* Search.plist */,
 				F352E1801C89187000974874 /* MainModel.h */,
 				F352E1811C89187000974874 /* MainModel.m */,
@@ -590,6 +598,7 @@
 				F335320C1C902BA8007A0751 /* Self.storyboard in Resources */,
 				F31F751E1C87D36C00E847F3 /* LaunchScreen.storyboard in Resources */,
 				F3C4AB531C8868BC00BF49E3 /* blueArrowDown.png in Resources */,
+				F368398B1C9403F1008C8AFF /* ListDetail.plist in Resources */,
 				F3C4AB5C1C8875EB00BF49E3 /* Main.plist in Resources */,
 				F3B489CE1C8C275E0018BC9F /* Property List.plist in Resources */,
 				F3D359DD1C8FBDA2006CB043 /* List.plist in Resources */,
@@ -676,6 +685,7 @@
 				F3C4AB541C8868BC00BF49E3 /* PullingRefreshTableView.m in Sources */,
 				F3C4AB3E1C88400F00BF49E3 /* VOSegmentedControl.m in Sources */,
 				F3D359E31C8FCA99006CB043 /* SetViewController.m in Sources */,
+				F36839891C93F9C3008C8AFF /* ListDetailViewController.m in Sources */,
 				F3D359DA1C8FACEF006CB043 /* ListTableViewCell.m in Sources */,
 				F3B08F461C8AAC71000F1535 /* DetailViewController.m in Sources */,
 				F3B489D11C8C2F340018BC9F /* SetView.m in Sources */,
@@ -782,6 +792,7 @@
 			baseConfigurationReference = 3C77B96438C6C3D9C46F03B4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -810,6 +821,7 @@
 			baseConfigurationReference = B3C194C46927D4B1D664EED4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

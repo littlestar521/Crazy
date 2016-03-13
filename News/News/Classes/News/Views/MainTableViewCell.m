@@ -22,6 +22,7 @@
 - (void)awakeFromNib {
     // Initialization code
 }
+
 - (void)setModel:(MainModel *)model{
     
     [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:model.thumbnail] placeholderImage:nil];

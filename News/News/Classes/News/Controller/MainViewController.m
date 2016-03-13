@@ -48,16 +48,13 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"暴走集锦";
     self.navigationController.navigationBar.barTintColor = MineColor;
-    [self showLeftBtn];
+    [self showLeftBtn]; 
     
     [self.view addSubview:self.segmentControl];
     [self.view addSubview:self.pullrefreshV];
 
-//    [self.pullrefreshV launchRefreshing];
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     _timeStamp = [HWTools getTimestamp];
-    
     
     //注册cell
     [self.pullrefreshV registerNib:[UINib nibWithNibName:@"MainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
@@ -70,19 +67,15 @@
 }
 //实现自定义代理方法
 - (void)getOtherViewController:(UIViewController *)otherVC{
-    
     [self.navigationController pushViewController:otherVC animated:NO];
 }
-
 #pragma mark ----------  UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.classifyListType == ClassifyListTypeRecommend) {
         return self.listArray.count;
     }
         return self.mediaListArray.count;
-    
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.classifyListType == ClassifyListTypeRecommend) {
         MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -92,12 +85,15 @@
         }
         return cell;
     }
-    MediaTableViewCell *mediaCell = [self.pullrefreshV dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
-    if (indexPath.row < self.mediaListArray.count) {
-        mediaCell.model = self.mediaListArray[indexPath.row];
+    MediaTableViewCell *mediaCell = [tableView dequeueReusableCellWithIdentifier:@"videoCellIdentifier"];
+    if (mediaCell == nil) {
+        mediaCell = [[[NSBundle mainBundle] loadNibNamed:@"MediaTableViewCell" owner:nil options:nil] firstObject];
+        if (indexPath.row < self.mediaListArray.count) {
+            mediaCell.model = self.mediaListArray
+            [indexPath.row];
+        }
     }
     return mediaCell;
-    
 }
 
 #pragma mark ---------- UITableViewDelegate
@@ -148,7 +144,7 @@
 }
 - (PullingRefreshTableView *)pullrefreshV{
     if (_pullrefreshV == nil) {
-        self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, kScreenHeight-100)pullingDelegate:self];
+        self.pullrefreshV = [[PullingRefreshTableView alloc]initWithFrame:CGRectMake(0, 108, kScreenWidth, kScreenHeight-108)pullingDelegate:self];
         self.pullrefreshV.delegate = self;
         self.pullrefreshV.dataSource = self;
         if (self.classifyListType == ClassifyListTypeRecommend) {
@@ -183,7 +179,7 @@
     [ProgressHUD show:@"别催，加载着呢~"];
     NSString *urlstr =kMainDataList;
     if (!_refreshing) {
-        urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",_timeStamp]];
+        urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"?timestamp=%lu&",(long)_timeStamp]];
     }else{
         if (self.listArray.count > 0){
             [self.listArray removeAllObjects];
@@ -280,13 +276,13 @@
 }
 
 - (void)configTableViewHeaderView{
-    self.tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
+    self.tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight/3)];
     self.tableViewHeaderView.backgroundColor = [UIColor whiteColor];
    
     //添加图片
     if (self.adArray.count > 0) {
         for (int i = 0; i < self.adArray.count; i++) {
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth * i , 0, kScreenWidth, 260)];
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth * i , 0, kScreenWidth, kScreenHeight/3)];
             MainModel *model = self.adArray[i];
             [imageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
             imageView.userInteractionEnabled = YES;
@@ -350,8 +346,8 @@
 }
 - (UIScrollView *)carouseView{
     if (_carouseView == nil) {
-        self.carouseView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 260)];
-        self.carouseView.contentSize = CGSizeMake(self.adArray.count*kScreenWidth, 260);
+        self.carouseView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth,kScreenHeight/3)];
+        self.carouseView.contentSize = CGSizeMake(self.adArray.count*kScreenWidth, kScreenHeight/3);
         self.carouseView.pagingEnabled = YES;
         self.carouseView.scrollEnabled = YES;
         self.carouseView.showsHorizontalScrollIndicator = NO;
@@ -364,7 +360,7 @@
 - (UIPageControl *)pageControll{
     if (_pageControll == nil) {
         
-        self.pageControll = [[UIPageControl alloc]initWithFrame:CGRectMake(0, 230, kScreenWidth, 30)];
+        self.pageControll = [[UIPageControl alloc]initWithFrame:CGRectMake(0, kScreenHeight/3-30, kScreenWidth, 30)];
         self.pageControll.currentPageIndicatorTintColor = [UIColor cyanColor];
         [self.pageControll addTarget:self action:@selector(pageControllAction:) forControlEvents:UIControlEventValueChanged];
     }

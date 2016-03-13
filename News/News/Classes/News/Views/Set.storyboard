@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Set View Controller-->
@@ -17,10 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-zd-QDp">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-zd-QDp">
                                 <rect key="frame" x="0.0" y="62" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0Za-JF-SeA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="200" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="163" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-92" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="44" maxY="0.0"/>
                                 <state key="normal" title="文章大字号" image="icon_setting_wordsize">
@@ -30,58 +34,69 @@
                                     <action selector="articlesSizeAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="0mg-tG-N6k"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-jb-nB4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-jb-nB4">
                                 <rect key="frame" x="0.0" y="121" width="375" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="N2O-Zj-VJ3"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE4-5D-JaI">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mE4-5D-JaI">
                                 <rect key="frame" x="0.0" y="123" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="O3S-gz-WwI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="119" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="254" maxY="0.0"/>
-                                <state key="normal" title="清除缓存" image="icon_setting_cache">
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-43" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="120" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="198" maxY="0.0"/>
+                                <state key="normal" image="icon_setting_cache">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clearAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="UeO-LH-qNe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OM-J9-kqg">
-                                <rect key="frame" x="0.0" y="243" width="375" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="1" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="102" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="245" maxY="1"/>
-                                <state key="normal" title="分享此软件" image="icon_setting_shareapp">
-                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="0rQ-nY-A3J"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXB-PU-2Cf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXB-PU-2Cf">
                                 <rect key="frame" x="0.0" y="304" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="lxU-9D-Tis"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-39" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="187" maxY="-2"/>
-                                <state key="normal" title="      版本信息                                    2.4.0" image="icon_version_information">
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-12" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="42" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="178" maxY="-2"/>
+                                <state key="normal" title="版本信息    2.4.0" image="icon_version_information">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="appversionAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="3dv-Fz-x8z"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="08h-be-Wcp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="08h-be-Wcp">
                                 <rect key="frame" x="0.0" y="182" width="375" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="X9D-r2-zDZ"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-KG-JqV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-KG-JqV">
                                 <rect key="frame" x="0.0" y="243" width="375" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="w7J-O3-1Ja"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="37q-qx-VHS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="37q-qx-VHS">
                                 <rect key="frame" x="0.0" y="304" width="375" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="T31-cy-HGi"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVn-dJ-2WG">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVn-dJ-2WG">
                                 <rect key="frame" x="0.0" y="183" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="40F-la-d5H"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-37" maxY="0.0"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="104" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="241" maxY="0.0"/>
                                 <state key="normal" title="反馈和帮助" image="icon_setting_feedback">
@@ -91,12 +106,59 @@
                                     <action selector="helpAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="sod-qT-myb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OM-J9-kqg">
+                                <rect key="frame" x="0.0" y="243" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fms-kI-0pT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="lEP-hY-6kA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-37" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="102" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="245" maxY="1"/>
+                                <state key="normal" title="分享此软件" image="icon_setting_shareapp">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareAction:" destination="dDN-hF-fG6" eventType="touchUpInside" id="0rQ-nY-A3J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="z3z-KG-JqV" secondAttribute="trailing" constant="-20" id="1HJ-8w-rri"/>
+                            <constraint firstItem="37q-qx-VHS" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="3yz-zb-b8X"/>
+                            <constraint firstItem="MVn-dJ-2WG" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="4Wc-wB-QCY"/>
+                            <constraint firstItem="mXB-PU-2Cf" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="5aW-11-87E"/>
+                            <constraint firstItem="mKh-jb-nB4" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="HXY-ne-RHE"/>
+                            <constraint firstItem="MVn-dJ-2WG" firstAttribute="top" secondItem="08h-be-Wcp" secondAttribute="bottom" id="JZa-09-RAp"/>
+                            <constraint firstItem="5OM-J9-kqg" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="LHF-5D-DXK"/>
+                            <constraint firstItem="08h-be-Wcp" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="Lpk-3U-VWa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="37q-qx-VHS" secondAttribute="trailing" constant="-20" id="MBb-sQ-FRb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mE4-5D-JaI" secondAttribute="trailing" constant="-20" id="Oyn-EH-MZT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mXB-PU-2Cf" secondAttribute="trailing" constant="-20" id="QCb-qN-d5C"/>
+                            <constraint firstItem="mE4-5D-JaI" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="RYQ-un-XBQ"/>
+                            <constraint firstItem="mXB-PU-2Cf" firstAttribute="top" secondItem="37q-qx-VHS" secondAttribute="bottom" constant="-1" id="S76-D0-z0D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MVn-dJ-2WG" secondAttribute="trailing" constant="-20" id="UkV-0c-3Xi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mKh-jb-nB4" secondAttribute="trailing" constant="-20" id="Vja-D2-Wzy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5OM-J9-kqg" secondAttribute="trailing" constant="-20" id="WJF-PE-mvM"/>
+                            <constraint firstItem="37q-qx-VHS" firstAttribute="top" secondItem="5OM-J9-kqg" secondAttribute="bottom" constant="1" id="WJz-8T-LqC"/>
+                            <constraint firstItem="dNc-zd-QDp" firstAttribute="top" secondItem="e7X-4E-SN1" secondAttribute="bottom" constant="42" id="alH-b4-LML"/>
+                            <constraint firstItem="08h-be-Wcp" firstAttribute="top" secondItem="mE4-5D-JaI" secondAttribute="bottom" constant="-1" id="dkd-wD-00u"/>
+                            <constraint firstItem="5OM-J9-kqg" firstAttribute="top" secondItem="z3z-KG-JqV" secondAttribute="bottom" constant="-1" id="g4o-BB-Ndf"/>
+                            <constraint firstItem="z3z-KG-JqV" firstAttribute="top" secondItem="MVn-dJ-2WG" secondAttribute="bottom" id="hVd-hS-9VJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="08h-be-Wcp" secondAttribute="trailing" constant="-20" id="hqf-yf-jVI"/>
+                            <constraint firstItem="mE4-5D-JaI" firstAttribute="top" secondItem="mKh-jb-nB4" secondAttribute="bottom" constant="1" id="ihd-PO-anb"/>
+                            <constraint firstItem="mKh-jb-nB4" firstAttribute="top" secondItem="dNc-zd-QDp" secondAttribute="bottom" constant="-1" id="o6U-8Z-cdW"/>
+                            <constraint firstItem="z3z-KG-JqV" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="oGh-By-kx7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dNc-zd-QDp" secondAttribute="trailing" constant="-20" id="rKf-Qx-oFo"/>
+                            <constraint firstItem="dNc-zd-QDp" firstAttribute="leading" secondItem="Aw6-z2-1PR" secondAttribute="leadingMargin" constant="-20" id="zxP-H6-SZP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="efn-Yw-uuW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="clearBtn" destination="mE4-5D-JaI" id="wYc-Rc-bb1"/>
                         <outlet property="searchDisplayController" destination="YJA-Tb-ULF" id="sqP-b6-s4J"/>
                     </connections>
                 </viewController>
@@ -110,7 +172,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="316.5" y="371.5"/>
+            <point key="canvasLocation" x="377.5" y="378.5"/>
         </scene>
     </scenes>
     <resources>

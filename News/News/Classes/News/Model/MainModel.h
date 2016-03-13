@@ -29,6 +29,7 @@
 @property(nonatomic,copy)NSString *section_color;
 @property(nonatomic,copy)NSArray *recommenders;
 @property(nonatomic,copy)NSString *avatar;
+@property(nonatomic,copy)NSString *uniq_id;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 @end

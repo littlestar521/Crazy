@@ -15,6 +15,8 @@
 
 @interface SetViewController ()<PushVCDelegate,MFMailComposeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *clearBtn;
+
 - (IBAction)articlesSizeAction:(id)sender;
 - (IBAction)clearAction:(id)sender;
 
@@ -25,6 +27,7 @@
 
 @property(nonatomic,strong)ShareView *shareView;
 
+
 @end
 
 @implementation SetViewController
@@ -34,6 +37,7 @@
     // Do any additional setup after loading the view.
     self.title = @"设置";
     [self showLeftBtn];
+    
 }
 - (void)getOtherViewController:(UIViewController *)otherVC{
     [self.navigationController pushViewController:otherVC animated:YES];
@@ -56,19 +60,35 @@
 */
 //文章字号
 - (IBAction)articlesSizeAction:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"友情提示：" message:@"当前条件受限，不可更改字号" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    SDImageCache *cache = [SDImageCache sharedImageCache];
+    NSInteger cacheSize = [cache getSize];
+    NSString *cacheStr = [NSString stringWithFormat:@"清除缓存 （%.02f M)",(float)cacheSize/1024/1024];
+    [self.clearBtn setTitle:cacheStr forState:UIControlStateNormal];
+    self.clearBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -190, 0, 0);
+    self.clearBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -50, 0 ,0);
+    
+}
 //清除缓存
 - (IBAction)clearAction:(id)sender {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:sender]) {
-        NSArray *files = [fileManager subpathsAtPath:sender];
-        for (NSString *fileName in files) {
-            NSString *path = [sender stringByAppendingPathComponent:fileName];
-            [fileManager removeItemAtPath:path error:nil];
-        }
-        [[SDImageCache sharedImageCache] cleanDisk];
+    [ProgressHUD show:@"正在为您清理中···"];
+    [self performSelector:@selector(clearImage) withObject:nil afterDelay:1.0];
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearDisk];
+    
     }
+- (void)clearImage{
+    [self.clearBtn setTitle:@"清除缓存" forState:UIControlStateNormal];
+    self.clearBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -35, 0, 0);
+    [ProgressHUD showSuccess:@"缓存已清除"];
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearDisk];
 }
 //分享
 - (IBAction)shareAction:(id)sender {

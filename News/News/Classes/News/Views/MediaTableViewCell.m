@@ -47,7 +47,7 @@
     [self.likeBtn setTitle:model.vote_count forState:UIControlStateNormal];
     [self.commentBtn setTitle:model.comment_count forState:UIControlStateNormal];
     NSInteger time = [model.play_time integerValue];
-    self.palyTime.text = [NSString stringWithFormat:@"%lu:%02lu",time/60,time%60];
+    self.palyTime.text = [NSString stringWithFormat:@"%d:%02d",time/60,time%60];
     self.url = model.first_url;
     
     
@@ -59,7 +59,7 @@
         NSString *urlstr = [self.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString:urlstr];
         _moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        _moviePlayer.view.frame = CGRectMake(4, 5, 367, 192);
+        _moviePlayer.view.frame = CGRectMake(8, 5,kScreenWidth-16, 192);
         _moviePlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.moviePlayer.view];
     }
