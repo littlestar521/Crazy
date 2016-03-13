@@ -31,7 +31,7 @@
     self.ueerNameTextFiled.delegate = self;
     self.passwordTextFiled.delegate = self;
     
-    [self showBackBtn];
+    [self showBackBtnWithName:nil];
 }
 
 - (void)getOtherViewController:(UIViewController *)otherVC{

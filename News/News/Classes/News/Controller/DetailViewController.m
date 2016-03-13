@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [self showBackBtn];
+    [self showBackBtnWithName:nil];
     UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.frame];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.data]];

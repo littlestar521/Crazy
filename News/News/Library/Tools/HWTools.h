@@ -11,10 +11,8 @@
 
 @interface HWTools : NSObject
 //时间转换的相关方法
-+ (NSString *)getDataFromString:(NSString *)timeStamp;
+
 + (NSDate *)getSystemNowDate;
-//根据文字内容返回文字高度
-+ (CGFloat)getTextHeightWithText:(NSString *)text biggestSize:(CGSize)bigSize textFont:(CGFloat)textFont;
 
 + (NSTimeInterval)getTimestamp;
 @end

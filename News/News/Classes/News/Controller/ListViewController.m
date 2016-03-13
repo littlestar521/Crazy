@@ -23,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"栏目";
-    [self showLeftBtn];
+    [self showLeftBtnWithName:@"栏目"];
     //注册
     [self.tableView registerNib:[UINib nibWithNibName:@"ListTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.tableView];

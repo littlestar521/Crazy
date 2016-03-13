@@ -32,9 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"排行榜";
     self.navigationController.navigationBar.backgroundColor = MineColor;
-    [self showLeftBtn];
+    [self showLeftBtnWithName:@"排行榜"];
     
     [self.view addSubview:self.segmentControl];
     [self.view addSubview:self.tableView];

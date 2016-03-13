@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showBackBtn];
+    [self showBackBtnWithName:nil];
     //密码密文显示
     self.passwordTF.secureTextEntry = YES;
     self.confirmationTF.secureTextEntry = YES;

@@ -46,9 +46,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"暴走集锦";
+//    self.title = @"暴走集锦";
+    [self showLeftBtnWithName:@"暴走集锦"];
     self.navigationController.navigationBar.barTintColor = MineColor;
-    [self showLeftBtn]; 
     
     [self.view addSubview:self.segmentControl];
     [self.view addSubview:self.pullrefreshV];

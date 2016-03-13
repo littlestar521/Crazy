@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showLeftBtn];
+    [self showLeftBtnWithName:nil];
     self.searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(kScreenWidth/8,20, kScreenWidth/2+kScreenWidth/6*2,40)];
     //占位符
     [self.searchBar setPlaceholder:@"Search"];

@@ -35,8 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"设置";
-    [self showLeftBtn];
+    [self showLeftBtnWithName:@"设置"];
     
 }
 - (void)getOtherViewController:(UIViewController *)otherVC{

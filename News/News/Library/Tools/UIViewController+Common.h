@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (Common)
-- (void)showBackBtn;
-- (void)showLeftBtn;
+- (void)showBackBtnWithName:(NSString *)name;
+- (void)showLeftBtnWithName:(NSString *)name;
+
 @end
